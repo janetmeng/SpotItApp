@@ -10,5 +10,5 @@ import UIKit
 class CardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var symbolImageView: UIImageView!
  //   @IBOutlet weak var symbolBigLabel: UILabel!
-    @IBOutlet weak var symbolNameLabel: UILabel!
+   // @IBOutlet weak var symbolNameLabel: UILabel!
 }

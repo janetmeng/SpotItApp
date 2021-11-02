@@ -13,25 +13,64 @@ class CardCollectionViewController: UICollectionViewController {
     
 //update the symbols, also make sure to get a zip of all the symbol photos and add them to the image asset
     
-    private var symbols : [Symbol] = [ Symbol(image: "Ankara", name: "Ankara"),
-                                        Symbol(image: "Antalya", name: "Antalya"),
-                                        Symbol(image: "Aydin", name: "Aydin"),
-                                        Symbol(image: "Bodrum", name: "Bodrum"),
-                                        Symbol(image: "Canakkale", name: "Canakkale"),
-                                        Symbol(image: "Cappadocia", name: "Cappadocia"),
-                                        Symbol(image: "Efes", name: "Efes"),
-                                        Symbol(image: "Eskisehir", name: "Eskisehir"),
-                                        Symbol(image: "Fethiye", name: "Fethiye"),
-                                        Symbol(image: "Istanbul", name: "Istanbul"),
-                                        Symbol(image: "Izmir", name: "Izmir"),
-                                        Symbol(image: "Mardin", name: "Mardin"),
-                                        Symbol(image: "Nemrut", name: "Nemrut"),
-                                        Symbol(image: "Pamukkale", name: "Pamukkale"),
-                                        Symbol(image: "Patara", name: "Patara"),
-                                        Symbol(image: "Rize", name: "Rize"),
-                                        Symbol(image: "Salda", name: "Salda"),
-                                        Symbol(image: "Sumela", name: "Sumela")]
- 
+    private var symbols : [Symbol] = [ Symbol(image: "Algae", name: "algae"),
+                                        Symbol(image: "Beach", name: "beach"),
+                                        Symbol(image: "Buoy", name: "buoy"),
+                                        Symbol(image: "Clam", name: "clam"),
+                                        Symbol(image: "Clownfish", name: "clownfish"),
+                                        Symbol(image: "Coastline", name: "coastline"),
+                                        Symbol(image: "Compass", name: "compass"),
+                                        Symbol(image: "Conch Shell", name: "conchShell"),
+                                        Symbol(image: "Coral", name: "coral"),
+                                        Symbol(image: "Crab", name: "crab"),
+                                        Symbol(image: "Crocodile", name: "crocodile"),
+                                        Symbol(image: "Diver", name: "diver"),
+                                        Symbol(image: "Dolphin", name: "dolphin"),
+                                        Symbol(image: "Dragon", name: "dragon"),
+                                        Symbol(image: "Drop of Water", name: "dropOfWater"),
+                                        Symbol(image: "Eel", name: "eel"),
+                                        Symbol(image: "Exclamation Mark", name: "exclamationMark"),
+                                        Symbol(image: "Eyepatch", name: "eyepatch"),
+                                        Symbol(image: "Fins", name: "fins"),
+                                        Symbol(image: "Fishing Rod", name: "fishingRod"),
+                                        Symbol(image: "Go", name: "go"),
+                                        Symbol(image: "High Tide", name: "highTide"),
+                                        Symbol(image: "Island", name: "island"),
+                                        Symbol(image: "Jellyfish", name: "jellyfish"),
+                                        Symbol(image: "Kelp", name: "kelp"),
+                                        Symbol(image: "Lantern Fish", name: "lanternFish"),
+                                        Symbol(image: "Manatee", name: "manatee"),
+                                        Symbol(image: "Narwhal", name: "narwhal"),
+                                        Symbol(image: "Octopus", name: "octopus"),
+                                        Symbol(image: "Orca", name: "orca"),
+                                        Symbol(image: "Penguin", name: "penguin"),
+                                        Symbol(image: "Salmon", name: "salmon"),
+                                        Symbol(image: "Seagull", name: "seagull"),
+                                        Symbol(image: "Seahorse", name: "seahorse"),
+                                        Symbol(image: "Sea Lion", name: "sealion"),
+                                        Symbol(image: "Serpent", name: "serpentt"),
+                                        Symbol(image: "Shark", name: "shark"),
+                                        Symbol(image: "Ship", name: "ship"),
+                                        Symbol(image: "Ship Wheel", name: "shipwheel"),
+                                        Symbol(image: "Shrimp", name: "shrimp"),
+                                        Symbol(image: "Smiley Face", name: "smileyFace"),
+                                        Symbol(image: "Sponge", name: "sponge"),
+                                        Symbol(image: "Squid", name: "squid"),
+                                        Symbol(image: "Starfish", name: "starfish"),
+                                        Symbol(image: "Stingray", name: "stingrayReal"),
+                                        Symbol(image: "Surfboard", name: "surfboard"),
+                                        Symbol(image: "Treasure", name: "treasure"),
+                                        Symbol(image: "Trident", name: "trident"),
+                                        Symbol(image: "Turtle", name: "turtle"),
+                                        Symbol(image: "Walrus", name: "walrus"),
+                                        Symbol(image: "Water Splash", name: "waterSplash"),
+                                        Symbol(image: "Walrus", name: "walrus"),
+                                        Symbol(image: "Wave", name: "wave"),
+                                        Symbol(image: "Whale Fin", name: "whaleFin"),
+                                        Symbol(image: "Willow", name: "willow"),
+                                        Symbol(image: "Yacht", name: "yacht"),
+                                        Symbol(image: "Yay", name: "yay")]
+ //most updated list of images is on the doc "Images for Icons"
  /*
     private var symbols: [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
     */
@@ -73,9 +112,9 @@ class CardCollectionViewController: UICollectionViewController {
         
         //change to find a way that maps the image w/ tag xxx to the place with index xxx in the array that i made using the dobble algorithm
     
-            let city = symbols[indexPath.row]
-            cell.symbolImageView.image = UIImage(named: city.image)
-            cell.symbolNameLabel.text = city.name
+            let theSymbol = symbols[indexPath.row]
+            cell.symbolImageView.image = UIImage(named: theSymbol.image)
+         //   cell.symbolNameLabel.text = theSymbol.name
             return cell
         /*
             // var n: Int = 1
