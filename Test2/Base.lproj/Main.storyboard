@@ -16,33 +16,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AhI-WJ-YDe">
-                            <size key="itemSize" width="169" height="235"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AhI-WJ-YDe">
+                            <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dataCell" id="NPy-Hb-IwB" customClass="CardCollectionViewCell" customModule="Test2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="169" height="235"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xd7-H3-SAH">
-                                    <rect key="frame" x="0.0" y="0.0" width="169" height="235"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w5D-GB-X0n">
-                                            <rect key="frame" x="8" y="8" width="153" height="219"/>
-                                            <color key="backgroundColor" systemColor="linkColor"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                            <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="w5D-GB-X0n" firstAttribute="bottom" secondItem="xd7-H3-SAH" secondAttribute="bottomMargin" id="7xv-RA-8VW"/>
-                                        <constraint firstItem="w5D-GB-X0n" firstAttribute="trailing" secondItem="xd7-H3-SAH" secondAttribute="trailingMargin" id="Dqs-GS-3fI"/>
-                                        <constraint firstItem="w5D-GB-X0n" firstAttribute="top" secondItem="xd7-H3-SAH" secondAttribute="topMargin" id="gHp-kw-Gnh"/>
-                                        <constraint firstItem="w5D-GB-X0n" firstAttribute="leading" secondItem="xd7-H3-SAH" secondAttribute="leadingMargin" id="tOc-W5-oZm"/>
+                                        <constraint firstItem="w5D-GB-X0n" firstAttribute="top" secondItem="xd7-H3-SAH" secondAttribute="top" id="01R-j8-KEi"/>
+                                        <constraint firstItem="w5D-GB-X0n" firstAttribute="leading" secondItem="xd7-H3-SAH" secondAttribute="leading" id="87E-st-HLI"/>
+                                        <constraint firstItem="w5D-GB-X0n" firstAttribute="centerY" secondItem="xd7-H3-SAH" secondAttribute="centerY" id="VHk-dC-V6S"/>
+                                        <constraint firstItem="w5D-GB-X0n" firstAttribute="centerX" secondItem="xd7-H3-SAH" secondAttribute="centerX" id="pOb-do-7B3"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="169" height="235"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <size key="customSize" width="100" height="100"/>
                                 <connections>
                                     <outlet property="symbolImageView" destination="w5D-GB-X0n" id="WWz-yv-QXy"/>
                                 </connections>
@@ -79,11 +81,14 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

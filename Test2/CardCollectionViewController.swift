@@ -9,7 +9,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class CardCollectionViewController: UICollectionViewController {
+class CardCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
 //update the symbols, also make sure to get a zip of all the symbol photos and add them to the image asset
     
@@ -104,62 +104,35 @@ class CardCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
            return 8
-       }
+    }
  
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dataCell", for: indexPath) as! CardCollectionViewCell
-    
-        
-        //change to find a way that maps the image w/ tag xxx to the place with index xxx in the array that i made using the dobble algorithm
-    
             let theSymbol = symbols[indexPath.row]
-            cell.symbolImageView.image = UIImage(named: theSymbol.image)
-         //   cell.symbolNameLabel.text = theSymbol.name
+            cell.symbolImageView.image = UIImage(named: theSymbol.name)
             return cell
-        /*
-            // var n: Int = 1
-            var currentTag = 0
-            if symbols.count != 0 {
-                for eachSymbol in symbols { //eachSymbol is a Symbol with image (UIView) and String (label)
-
-                    cell.symbolImageView = UIImageView(named: city.image)
-                    cell.symbolImageView.tag = currentTag
-                    currentTag += 1
-                    // don't forget to set the frame for the emojiView
-                }
-            }
- */
-        
-          //  let symbolNumber = symbols[indexPath.row]
-         //   cell.symbolBigLabel.text = String(symbolNumber)
-         //   cell.symbolNameLabel.text = "Card"
-        //    cell.symbolNameLabel.tag = 0 //edit
-        
-            
-        
-            // assign tags to the 57 images
-           
-        }
+    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let yourWidth = collectionView.bounds.width/4.0 - 6
+        let yourWidth = collectionView.bounds.width/4.0
         let yourHeight = yourWidth
 
         return CGSize(width: yourWidth, height: yourHeight)
     }
- 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
     
+    // func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    //      return UIEdgeInsets.zero
+     //}
+
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+         return 0
+     }
+
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+         return 0
+     }
+ 
+ 
     // MARK: UICollectionViewDelegate
 
     /*
@@ -167,16 +140,15 @@ class CardCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
 
-    /*
+
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
+    
 
-    /*
+
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
         return false
@@ -191,4 +163,6 @@ class CardCollectionViewController: UICollectionViewController {
     }
     */
 
+
 }
+
