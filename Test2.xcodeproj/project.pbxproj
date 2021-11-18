@@ -13,10 +13,10 @@
 		79225C2727189B4B00D5CC69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79225C2627189B4B00D5CC69 /* Assets.xcassets */; };
 		79225C2A27189B4B00D5CC69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79225C2827189B4B00D5CC69 /* LaunchScreen.storyboard */; };
 		792F581F2731E21500E1C7BF /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 792F581E2731E21500E1C7BF /* .gitignore */; };
+		793B452F2745B22E005C1F56 /* CardCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793B452E2745B22E005C1F56 /* CardCollectionReusableView.swift */; };
 		79A471E4271DD19000DDD3AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A471E3271DD19000DDD3AA /* CardCollectionViewCell.swift */; };
 		79A471E6271DD1DE00DDD3AA /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A471E5271DD1DE00DDD3AA /* CardCollectionViewController.swift */; };
 		79A471E8271DD4A100DDD3AA /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A471E7271DD4A100DDD3AA /* Symbol.swift */; };
-		79BA1AE7274095350072D247 /* SymbolToggleHeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BA1AE6274095350072D247 /* SymbolToggleHeaderViewCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +28,10 @@
 		79225C2927189B4B00D5CC69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79225C2B27189B4B00D5CC69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		792F581E2731E21500E1C7BF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		793B452E2745B22E005C1F56 /* CardCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionReusableView.swift; sourceTree = "<group>"; };
 		79A471E3271DD19000DDD3AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		79A471E5271DD1DE00DDD3AA /* CardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
 		79A471E7271DD4A100DDD3AA /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
-		79BA1AE6274095350072D247 /* SymbolToggleHeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolToggleHeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 				79225C2627189B4B00D5CC69 /* Assets.xcassets */,
 				79225C2827189B4B00D5CC69 /* LaunchScreen.storyboard */,
 				79225C2B27189B4B00D5CC69 /* Info.plist */,
-				79BA1AE6274095350072D247 /* SymbolToggleHeaderViewCollectionReusableView.swift */,
+				793B452E2745B22E005C1F56 /* CardCollectionReusableView.swift */,
 			);
 			path = Test2;
 			sourceTree = "<group>";
@@ -154,8 +154,8 @@
 				79225C1E27189B4800D5CC69 /* AppDelegate.swift in Sources */,
 				79A471E4271DD19000DDD3AA /* CardCollectionViewCell.swift in Sources */,
 				79225C2027189B4800D5CC69 /* SceneDelegate.swift in Sources */,
+				793B452F2745B22E005C1F56 /* CardCollectionReusableView.swift in Sources */,
 				79A471E8271DD4A100DDD3AA /* Symbol.swift in Sources */,
-				79BA1AE7274095350072D247 /* SymbolToggleHeaderViewCollectionReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

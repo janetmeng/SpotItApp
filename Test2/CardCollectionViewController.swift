@@ -41,6 +41,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                                         Symbol(image: "Narwhal", name: "narwhal"),
                                         Symbol(image: "Octopus", name: "octopus"),
                                         Symbol(image: "Orca", name: "orca"),
+                                        Symbol(image: "Otter", name: "otter"),
                                         Symbol(image: "Penguin", name: "penguin"),
                                         Symbol(image: "Salmon", name: "salmon"),
                                         Symbol(image: "Seagull", name: "seagull"),
@@ -60,7 +61,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                                         Symbol(image: "Treasure", name: "treasure"),
                                         Symbol(image: "Trident", name: "trident"),
                                         Symbol(image: "Turtle", name: "turtle"),
-                                        Symbol(image: "Walrus", name: "walrus"),
                                         Symbol(image: "Water Splash", name: "waterSplash"),
                                         Symbol(image: "Walrus", name: "walrus"),
                                         Symbol(image: "Wave", name: "wave"),
@@ -74,7 +74,12 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private var tappedSymbol1 = Symbol(image: "", name: "")
     private var tappedSymbol2 = Symbol(image: "", name: "")
-    private var decknumber = 0    // decknumber starts at 0. incremented at each win
+    private var decknumber: Int = 0    // decknumber starts at 0. incremented at each win
+    private var timer: Timer  = Timer()
+    public  let maxseconds: Int = 8  // seconds
+    private var counter: Int = 8  // seconds
+    private var mysectionheader: CardCollectionReusableView = CardCollectionReusableView()
+    private var score: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +99,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
 
     // MARK: UICollectionViewDataSource
 
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
             return 2
     }
@@ -103,11 +107,9 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
            return 8
     }
  
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dataCell", for: indexPath) as! CardCollectionViewCell
         cell.symbolImageView.backgroundColor=UIColor.init(white: 1, alpha: 0.5)   // to make the background white (instead of grey)
-
         if (indexPath.section == 0){ //master card (card at top of phone screen
             let indexIntoNestedArray1 = deck[decknumber][indexPath.row]
             let theSymbol1 = symbols[indexIntoNestedArray1-1]
@@ -120,11 +122,41 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             let theSymbol2 = symbols[indexIntoNestedArray2-1]
             cell.symbolImageView.image = UIImage(named: theSymbol2.name)
         }
-
        //Configure the cell
         return cell
     }
     
+    // called every time interval from the timer
+    @objc func timerAction(){
+        counter -= 1
+         
+        mysectionheader.sectionHeaderTimer.text=String(counter) + " seconds left"
+        
+        if (counter<=0){
+            decknumber+=1
+            if (decknumber<=deck.count - 2){
+                print("Deck number= " + String(decknumber))
+                print("Number of decks= " + String(deck.count))
+            } else { //decknumber is 56 (last set of cards){
+                print("End of game, we have displayed all the decks. Go to the Main Menu")
+                print("Deck number = " + String(decknumber))
+                exit(-1) // you didn't do anything, the game ran through the whole cycle. ADD play again button and end game button, call segue to third view controller
+            }
+              
+            tappedSymbol1 = Symbol(image: "", name: "")
+            tappedSymbol2 = Symbol(image: "", name: "")
+              
+            score-=10
+            if (score<0){
+                score=0
+            }
+          
+            clear_all_highlighted_cells_section()   // clear all selections
+            timer.invalidate()
+            counter=maxseconds
+            collectionView.reloadData()
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let yourWidth = collectionView.bounds.width/4.0
         let yourHeight = yourWidth
@@ -151,7 +183,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func findPairs(_ myCellIndex: IndexPath){
-        var press=false
         let res = get_symbol(x: myCellIndex.section + decknumber, y: myCellIndex.row)   // tapped 1 time (on the symbol). means the symbol has been selected
         
         if (myCellIndex.section == 0){
@@ -159,47 +190,99 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             print("section 0 ; ")
             print(tappedSymbol1)
             print("\n")
-            press = true
+            
+            clear_all_highlighted_cells_section(0)   // clear all selections in card 1 (the card on the top)
+            let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
+            cell.layer.borderWidth = 3.0
+            cell.layer.borderColor = UIColor.red.cgColor
+           // cell.symbolImageView.alpha=0.5
         }
         else if (myCellIndex.section == 1){
             tappedSymbol2=Symbol(image: res[1], name: res[2])
             print ("section 1 ; ")
             print(tappedSymbol2)
             print("\n")
-            press=true
+            
+            clear_all_highlighted_cells_section(1)  // clear all selections in card 2 (the card on the bottom)
+            let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
+            cell.layer.borderWidth = 3.0
+            cell.layer.borderColor = UIColor.green.cgColor
+           // cell.symbolImageView.alpha=0.5
         }
         
-        let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.red.cgColor
-        cell.symbolImageView.alpha=0.5
-        
-        if (tappedSymbol1.name==tappedSymbol2.name && press==true){ //add if needed: tappedSymbol1.image==tappedSymbol2.image
-            decknumber+=1
+        if (tappedSymbol1.name==tappedSymbol2.name){ //add if needed: tappedSymbol1.image==tappedSymbol2.image
+          decknumber+=1
+            if (decknumber <= deck.count - 2){
+                print("Deck number = " + String(decknumber))
+                print("Number of decks = " + String(deck.count))
+            } else{
+                print("End of game, we have displayed all the decks. Go to the Main Menu")
+                print("decknumber= " + String(decknumber))
+                exit(-1) // you won, ask to play again
+            }
+            score += 8
             tappedSymbol1 = Symbol(image: "", name: "")
             tappedSymbol2 = Symbol(image: "", name: "")
         
-            clear_all_highlighted_cells()
+            clear_all_highlighted_cells_section()   // clear all selections
+            timer.invalidate()
+            counter=maxseconds
             collectionView.reloadData()   // will run cellForItemAt method to redraw the 2 cards
         }
     }
     
-    func clear_all_highlighted_cells (){
+    func clear_all_highlighted_cells_section (_ cardnumber : Int? = nil){
         let allCells = collectionView.indexPathsForVisibleItems
-        for k in allCells{
-            let cell = collectionView.cellForItem(at: k) as! CardCollectionViewCell
-            cell.layer.borderWidth = 0.0
-            cell.symbolImageView.alpha = 1
+        if (cardnumber == nil){
+                for k in allCells
+                {
+                    let cell = collectionView.cellForItem(at: k) as! CardCollectionViewCell
+                    cell.layer.borderWidth = 0.0
+                    cell.symbolImageView.alpha = 1
+                }
+        } else{
+            for k in allCells{
+               if (k.section == cardnumber){
+                   let cell = collectionView.cellForItem(at: k) as! CardCollectionViewCell
+                    cell.layer.borderWidth = 0.0
+                    //cell.symbolImageView.alpha = 1
+               }
+            }
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath){
         collectionView.deselectItem(at: indexPath, animated: true)
-        let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-        cell.layer.borderWidth = 0.0
-        cell.symbolImageView.alpha=1
     }
-  
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
+        print("HEADER: " + String(indexPath.section) + " ; " + String(indexPath.row))
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? CardCollectionReusableView{
+            if (indexPath.section == 0){
+                sectionHeader.sectionHeaderlabel.text = "Score: \(score)"
+                sectionHeader.sectionHeaderlabel.textColor=UIColor.red
+                sectionHeader.sectionHeaderlabel.font=UIFont(name: "Arial", size: 44)
+                sectionHeader.sectionHeaderTimer.text=String(counter) + " seconds left"
+            
+                sectionHeader.sectionHeaderCard.font=UIFont(name: "Arial", size: 24)
+                sectionHeader.sectionHeaderCard.textColor = UIColor.black
+                sectionHeader.sectionHeaderCard.text = "Card 1"
+                mysectionheader = sectionHeader
+                // start the timer
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            }else if (indexPath.section == 1){
+                sectionHeader.sectionHeaderlabel.text=""
+                sectionHeader.sectionHeaderTimer.text=""
+                
+                sectionHeader.sectionHeaderCard.font=UIFont(name: "Arial", size: 24)
+                sectionHeader.sectionHeaderCard.textColor = UIColor.black
+                sectionHeader.sectionHeaderCard.text = "Card 2"
+            }
+            return sectionHeader
+        }
+        return UICollectionReusableView()
+    }
+    
     func get_symbol(x: Int,y: Int) -> Array<String>{
         let section :String = String(format: "%d", x)
         let indexIntoNestedArray1 = deck[x][y]
@@ -207,16 +290,13 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         return [section, theSymbol.image, theSymbol.name,String(y)]
     }
     
-    
   /*
-
     // MARK: UICollectionViewDelegate
 
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-
 
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
@@ -228,12 +308,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
+
     }
     */
-
 }
-
-
-
-
