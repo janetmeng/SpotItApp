@@ -76,13 +76,14 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     private var tappedSymbol2 = Symbol(image: "", name: "")
     private var decknumber: Int = 0    // decknumber starts at 0. incremented at each win
     private var timer: Timer  = Timer()
-    public  let maxseconds: Int = 8  // seconds
-    private var counter: Int = 8  // seconds
+    public  let maxseconds: Int = 1  // seconds
+    private var counter: Int = 1  // seconds
     private var mysectionheader: CardCollectionReusableView = CardCollectionReusableView()
     private var score: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
         deck.shuffle()
         // Do any additional setup after loading the view.
     }
@@ -110,14 +111,13 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dataCell", for: indexPath) as! CardCollectionViewCell
         cell.symbolImageView.backgroundColor=UIColor.init(white: 1, alpha: 0.5)   // to make the background white (instead of grey)
-        if (indexPath.section == 0){ //master card (card at top of phone screen
+        
+        if (indexPath.section == 0){ //master card (card at top of phone screen)
             let indexIntoNestedArray1 = deck[decknumber][indexPath.row]
             let theSymbol1 = symbols[indexIntoNestedArray1-1]
             cell.symbolImageView.image = UIImage(named: theSymbol1.name)
         }
-        else if (indexPath.section == 1)
-        { //player's card (card at bottom of phone screen
-           
+        else if (indexPath.section == 1 && (decknumber <= deck.count - 2)){ //player's card (card at bottom of phone screen)
             let indexIntoNestedArray2 = deck[decknumber+1][indexPath.row]
             let theSymbol2 = symbols[indexIntoNestedArray2-1]
             cell.symbolImageView.image = UIImage(named: theSymbol2.name)
@@ -129,34 +129,51 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     // called every time interval from the timer
     @objc func timerAction(){
         counter -= 1
-         
         mysectionheader.sectionHeaderTimer.text=String(counter) + " seconds left"
         
         if (counter<=0){
             decknumber+=1
             if (decknumber<=deck.count - 2){
-                print("Deck number= " + String(decknumber))
-                print("Number of decks= " + String(deck.count))
-            } else { //decknumber is 56 (last set of cards){
-                print("End of game, we have displayed all the decks. Go to the Main Menu")
                 print("Deck number = " + String(decknumber))
-                exit(-1) // you didn't do anything, the game ran through the whole cycle. ADD play again button and end game button, call segue to third view controller
+                print("Number of decks = " + String(deck.count))
+                tappedSymbol1 = Symbol(image: "", name: "")
+                tappedSymbol2 = Symbol(image: "", name: "")
+                score-=10
+                if (score<0){
+                    score=0
+                }
+                clear_all_highlighted_cells_section()   // clear all selections
+                timer.invalidate()
+                counter=maxseconds
+                collectionView.reloadData()
+            } else { //decknumber is 56 (last set of cards){
+                print("End of game. We have displayed all the decks. Launch PopOver View")
+                print("Deck number = " + String(decknumber))
+                timer.invalidate()
+                showGameOver()
+                counter=maxseconds
+                decknumber=0
+                collectionView.reloadData()  // try to play again (After button "play again was pressed")
             }
-              
-            tappedSymbol1 = Symbol(image: "", name: "")
-            tappedSymbol2 = Symbol(image: "", name: "")
-              
-            score-=10
-            if (score<0){
-                score=0
-            }
-          
-            clear_all_highlighted_cells_section()   // clear all selections
-            timer.invalidate()
-            counter=maxseconds
-            collectionView.reloadData()
         }
     }
+    
+    
+    @IBAction func showInstructions(_ sender: Any) { //leave her or put in instructionsVIewController with a segue in storyboard?
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameoverView = storyboard.instantiateViewController(withIdentifier: "instructionsvc")
+        self.navigationController?.pushViewController(gameoverView, animated: true)
+        //show(gameoverView, sender: self)
+    }
+ 
+    
+    @IBAction func showGameOver(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameoverView = storyboard.instantiateViewController(withIdentifier: "modal1")
+        self.navigationController?.pushViewController(gameoverView, animated: true)
+        //show(gameoverView, sender: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let yourWidth = collectionView.bounds.width/4.0
         let yourHeight = yourWidth
@@ -195,7 +212,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
             cell.layer.borderWidth = 3.0
             cell.layer.borderColor = UIColor.red.cgColor
-           // cell.symbolImageView.alpha=0.5
         }
         else if (myCellIndex.section == 1){
             tappedSymbol2=Symbol(image: res[1], name: res[2])
@@ -207,35 +223,39 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
             cell.layer.borderWidth = 3.0
             cell.layer.borderColor = UIColor.green.cgColor
-           // cell.symbolImageView.alpha=0.5
         }
         
-        if (tappedSymbol1.name==tappedSymbol2.name){ //add if needed: tappedSymbol1.image==tappedSymbol2.image
-          decknumber+=1
+        if (tappedSymbol1.name==tappedSymbol2.name){
+            decknumber+=1
             if (decknumber <= deck.count - 2){
                 print("Deck number = " + String(decknumber))
                 print("Number of decks = " + String(deck.count))
-            } else{
-                print("End of game, we have displayed all the decks. Go to the Main Menu")
-                print("decknumber= " + String(decknumber))
-                exit(-1) // you won, ask to play again
+                
+                score += 8
+                tappedSymbol1 = Symbol(image: "", name: "")
+                tappedSymbol2 = Symbol(image: "", name: "")
+            
+                clear_all_highlighted_cells_section()   // clear all selections
+                timer.invalidate()
+                counter=maxseconds
+                collectionView.reloadData()   // will run cellForItemAt method to redraw the 2 cards
             }
-            score += 8
-            tappedSymbol1 = Symbol(image: "", name: "")
-            tappedSymbol2 = Symbol(image: "", name: "")
-        
-            clear_all_highlighted_cells_section()   // clear all selections
-            timer.invalidate()
-            counter=maxseconds
-            collectionView.reloadData()   // will run cellForItemAt method to redraw the 2 cards
+            else{
+                print("End of game, we have displayed all the decks. Launch PopOver View")
+                print("Deck number = " + String(decknumber))
+                timer.invalidate()
+                showGameOver()
+                counter=maxseconds
+                decknumber=0
+                collectionView.reloadData()  // try to play again (After button "play again was pressed")
+            }
         }
     }
     
     func clear_all_highlighted_cells_section (_ cardnumber : Int? = nil){
         let allCells = collectionView.indexPathsForVisibleItems
         if (cardnumber == nil){
-                for k in allCells
-                {
+                for k in allCells{
                     let cell = collectionView.cellForItem(at: k) as! CardCollectionViewCell
                     cell.layer.borderWidth = 0.0
                     cell.symbolImageView.alpha = 1
