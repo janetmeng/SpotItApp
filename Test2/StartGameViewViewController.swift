@@ -14,9 +14,15 @@ class StartGameViewViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        print("first controller INGAME")
+        print("first controller IN GAME")
         let image1=UIImage(named: "waterSplash")
         view.backgroundColor = UIColor(patternImage: image1!)
+    }
+    @IBAction func showInstructions(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameoverView = storyboard.instantiateViewController(withIdentifier: "instructionsvc")
+        self.navigationController?.pushViewController(gameoverView, animated: true)
+        //show(gameoverView, sender: self)
     }
 
 

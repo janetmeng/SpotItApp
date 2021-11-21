@@ -17,8 +17,7 @@ class InstructionsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        
-        /*
+/*
        // only use this code if we end up creating segue from startGameVC to instructionsVC
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "instructionsvc")

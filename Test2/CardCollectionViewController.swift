@@ -157,14 +157,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             }
         }
     }
-    
-    
-    @IBAction func showInstructions(_ sender: Any) { //leave her or put in instructionsVIewController with a segue in storyboard?
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let gameoverView = storyboard.instantiateViewController(withIdentifier: "instructionsvc")
-        self.navigationController?.pushViewController(gameoverView, animated: true)
-        //show(gameoverView, sender: self)
-    }
  
     
     @IBAction func showGameOver(){
