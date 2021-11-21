@@ -10,6 +10,7 @@ import UIKit
 class InstructionsViewController: UIViewController {
     @IBOutlet weak var startGame: UIButton!
     @IBOutlet weak var returnToMainMenu: UIButton!
+    @IBOutlet weak var instructionsDescription: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,10 @@ class InstructionsViewController: UIViewController {
     }
     
     @IBAction func pressToStartGame(_ sender: Any) {
+        print("start playing, the button was pressed")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "StartGameViewId")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func pressToReturnToMainMenu(_ sender: Any) {
