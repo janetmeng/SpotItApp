@@ -9,21 +9,15 @@ import UIKit
 
 class InstructionsViewController: UIViewController {
     @IBOutlet weak var startGame: UIButton!
+    @IBOutlet weak var instructionsTitle: UILabel!
     @IBOutlet weak var returnToMainMenu: UIButton!
     @IBOutlet weak var instructionsDescription: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   self.navigationItem.setHidesBackButton(true, animated: true)
-
-        // Do any additional setup after loading the view.
-        
-/*
-       // only use this code if we end up creating segue from startGameVC to instructionsVC
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "instructionsvc")
-        self.navigationController?.pushViewController(vc, animated: true)
- */
+        instructionsDescription.center.x = self.view.center.x
+        instructionsTitle.center.x = self.view.center.x
+        startGame.center.x = self.view.center.x
     }
     
     @IBAction func pressToStartGame(_ sender: Any) {

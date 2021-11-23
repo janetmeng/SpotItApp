@@ -34,7 +34,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                                         Symbol(image: "Go", name: "go"),
                                         Symbol(image: "High Tide", name: "highTide"),
                                         Symbol(image: "Island", name: "island"),
-                                        Symbol(image: "Jellyfish", name: "jellyfish"),
+                                        Symbol(image: "Jellyfish", name: "jellyfishh"),
                                         Symbol(image: "Kelp", name: "kelp"),
                                         Symbol(image: "Lantern Fish", name: "lanternFish"),
                                         Symbol(image: "Manatee", name: "manatee"),
@@ -47,7 +47,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                                         Symbol(image: "Seagull", name: "seagull"),
                                         Symbol(image: "Seahorse", name: "seahorse"),
                                         Symbol(image: "Sea Lion", name: "sealion"),
-                                        Symbol(image: "Serpent", name: "serpentt"),
+                                        Symbol(image: "Serpent", name: "serpent"),
                                         Symbol(image: "Shark", name: "shark"),
                                         Symbol(image: "Ship", name: "ship"),
                                         Symbol(image: "Ship Wheel", name: "shipwheel"),
@@ -334,25 +334,29 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 sectionHeader.sectionHeaderCard.font=UIFont(name: "Arial", size: 18)
                 sectionHeader.sectionHeaderCard.textColor = UIColor.black
                 sectionHeader.sectionHeaderCard.text = "Card 1"
-               
-                mysectionheader = sectionHeader
                 
+                sectionHeader.sectionHeaderQuit.center.x=self.view.center.x
+                sectionHeader.sectionHeaderQuit.isHidden = false
+
+                mysectionheader = sectionHeader
                 // start the timer
                 timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-            }else if (indexPath.section == 1){
+            } else if (indexPath.section == 1){
+    
                 sectionHeader.sectionHeaderlabel.text = "Score: \(score)"
                 sectionHeader.sectionHeaderlabel.textColor=UIColor.white
                 sectionHeader.sectionHeaderlabel.font=UIFont(name: "Arial", size: 48)
                 
                 sectionHeader.sectionHeaderTimer.text=String(counter) + " seconds left"
                 sectionHeader.sectionHeaderTimer.textColor = UIColor.white
-             
+          
+                sectionHeader.sectionHeaderCard.center.x=self.view.center.x
                 sectionHeader.sectionHeaderCard.font=UIFont(name: "Arial", size: 18)
                 sectionHeader.sectionHeaderCard.textColor = UIColor.black
                 sectionHeader.sectionHeaderCard.text = "Card 2"
            
-                //sectionHeader.sectionQuitButton.isHidden = true
-
+                sectionHeader.sectionHeaderQuit.center.x=self.view.center.x
+                sectionHeader.sectionHeaderQuit.isHidden = true
             }
             return sectionHeader
         }

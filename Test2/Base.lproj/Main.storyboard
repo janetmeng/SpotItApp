@@ -124,15 +124,16 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlC-Dr-DGk">
-                                    <rect key="frame" x="0.0" y="29" width="414" height="37"/>
+                                    <rect key="frame" x="0.0" y="27" width="414" height="37"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                     <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-CM-Wg7">
-                                    <rect key="frame" x="0.0" y="69" width="414" height="22"/>
+                                    <rect key="frame" x="0.0" y="66" width="414" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" title="Quit Game">
                                         <color key="titleColor" systemColor="labelColor"/>
                                     </state>
@@ -141,7 +142,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-Lm-bAP">
-                                    <rect key="frame" x="0.0" y="94" width="414" height="21"/>
+                                    <rect key="frame" x="0.0" y="91" width="414" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -150,6 +151,7 @@
                             </subviews>
                             <connections>
                                 <outlet property="sectionHeaderCard" destination="C8k-Lm-bAP" id="cQj-nR-1jb"/>
+                                <outlet property="sectionHeaderQuit" destination="H1i-CM-Wg7" id="Xh9-ov-XCt"/>
                                 <outlet property="sectionHeaderTimer" destination="xeK-Sl-HcB" id="lvT-7n-A3B"/>
                                 <outlet property="sectionHeaderlabel" destination="JlC-Dr-DGk" id="adL-23-WGq"/>
                             </connections>
@@ -173,25 +175,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions for Search the Sea" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="oHa-MO-ruW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Instructions for Search the Sea" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHa-MO-ruW">
                                 <rect key="frame" x="20" y="95" width="374" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="UlK-iC-Qby"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VY4-9L-Ccs">
-                                <rect key="frame" x="137" y="735" width="141" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start Game"/>
-                                <connections>
-                                    <action selector="pressToStartGame:" destination="4t8-XI-CpU" eventType="touchUpInside" id="9Gq-ji-tEp"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="dUS-Mf-7X3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUS-Mf-7X3">
                                 <rect key="frame" x="20" y="211" width="374" height="492"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">Search the Sea is a pattern recognition game in which players try to find an image shown on two cards.
+                                <string key="text">Search the Sea is a pattern recognition game in which players try to find an image shown on two cards.
 
 Each card in Search the Sea features eight different symbols.
 
@@ -203,18 +198,36 @@ For every match the player fails to point out under the time limit, 8 points are
 
 You may quit the game at any time; however, note that your progress will not be saved. 
 
-Good luck and have fun playing Search the Sea!</mutableString>
+Good luck and have fun playing Search the Sea!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VY4-9L-Ccs">
+                                <rect key="frame" x="137" y="720" width="141" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start Game"/>
+                                <connections>
+                                    <action selector="pressToStartGame:" destination="4t8-XI-CpU" eventType="touchUpInside" id="9Gq-ji-tEp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g9U-cy-VfD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dUS-Mf-7X3" firstAttribute="leading" secondItem="oHa-MO-ruW" secondAttribute="leading" id="0la-lv-rkx"/>
+                            <constraint firstItem="dUS-Mf-7X3" firstAttribute="trailing" secondItem="oHa-MO-ruW" secondAttribute="trailing" id="5M8-dc-TjG"/>
+                            <constraint firstItem="oHa-MO-ruW" firstAttribute="leading" secondItem="1Ni-vB-jh3" secondAttribute="leadingMargin" id="71m-RZ-hEI"/>
+                            <constraint firstItem="VY4-9L-Ccs" firstAttribute="top" secondItem="dUS-Mf-7X3" secondAttribute="bottom" constant="17" id="K64-Uu-ehN"/>
+                            <constraint firstItem="oHa-MO-ruW" firstAttribute="centerX" secondItem="VY4-9L-Ccs" secondAttribute="centerX" id="Vz5-UH-SgV"/>
+                            <constraint firstItem="oHa-MO-ruW" firstAttribute="top" secondItem="g9U-cy-VfD" secondAttribute="top" constant="51" id="glX-CI-pj0"/>
+                            <constraint firstItem="dUS-Mf-7X3" firstAttribute="top" secondItem="oHa-MO-ruW" secondAttribute="bottom" constant="22" id="jCX-Xv-6LP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ils-b7-DXp"/>
                     <connections>
                         <outlet property="instructionsDescription" destination="dUS-Mf-7X3" id="gM1-4q-SPI"/>
+                        <outlet property="instructionsTitle" destination="oHa-MO-ruW" id="fDt-cp-9DB"/>
                         <outlet property="startGame" destination="VY4-9L-Ccs" id="Uwa-tg-738"/>
                     </connections>
                 </viewController>
