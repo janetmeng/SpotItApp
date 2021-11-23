@@ -307,7 +307,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                if (k.section == cardnumber){
                    let cell = collectionView.cellForItem(at: k) as! CardCollectionViewCell
                     cell.layer.borderWidth = 0.0
-                    //cell.symbolImageView.alpha = 1
                }
             }
         }
@@ -352,7 +351,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 sectionHeader.sectionHeaderCard.textColor = UIColor.black
                 sectionHeader.sectionHeaderCard.text = "Card 2"
            
-                sectionHeader.sectionQuitButton.isHidden = true
+                //sectionHeader.sectionQuitButton.isHidden = true
+
             }
             return sectionHeader
         }

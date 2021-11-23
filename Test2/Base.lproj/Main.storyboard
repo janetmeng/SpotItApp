@@ -152,7 +152,6 @@
                                 <outlet property="sectionHeaderCard" destination="C8k-Lm-bAP" id="cQj-nR-1jb"/>
                                 <outlet property="sectionHeaderTimer" destination="xeK-Sl-HcB" id="lvT-7n-A3B"/>
                                 <outlet property="sectionHeaderlabel" destination="JlC-Dr-DGk" id="adL-23-WGq"/>
-                                <outlet property="sectionQuitButton" destination="H1i-CM-Wg7" id="fyL-qe-Gh4"/>
                             </connections>
                         </collectionReusableView>
                         <connections>
@@ -174,8 +173,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions for Search the Sea" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="oHa-MO-ruW">
+                                <rect key="frame" x="20" y="95" width="374" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VY4-9L-Ccs">
+                                <rect key="frame" x="137" y="735" width="141" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start Game"/>
+                                <connections>
+                                    <action selector="pressToStartGame:" destination="4t8-XI-CpU" eventType="touchUpInside" id="9Gq-ji-tEp"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="dUS-Mf-7X3">
-                                <rect key="frame" x="43" y="207" width="351" height="444"/>
+                                <rect key="frame" x="20" y="211" width="374" height="492"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <mutableString key="text">Search the Sea is a pattern recognition game in which players try to find an image shown on two cards.
 
@@ -185,34 +199,18 @@ There is only 1 matching symbol between every pair of cards, and the goal of the
 
 For every match the player correctly points out, the player gets 8 points.
 
-For every match the player fails to point out under the time limit, 8 points are deducted. Good luck and have fun playing Search the
-Sea!</mutableString>
+For every match the player fails to point out under the time limit, 8 points are deducted. 
+
+You may quit the game at any time; however, note that your progress will not be saved. 
+
+Good luck and have fun playing Search the Sea!</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions for Search the Sea" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="oHa-MO-ruW">
-                                <rect key="frame" x="20" y="95" width="374" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VY4-9L-Ccs">
-                                <rect key="frame" x="137" y="667" width="141" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start Game"/>
-                                <connections>
-                                    <action selector="pressToStartGame:" destination="4t8-XI-CpU" eventType="touchUpInside" id="9Gq-ji-tEp"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g9U-cy-VfD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="g9U-cy-VfD" firstAttribute="bottom" secondItem="VY4-9L-Ccs" secondAttribute="bottom" constant="160" id="DnY-uA-dtS"/>
-                            <constraint firstItem="VY4-9L-Ccs" firstAttribute="leading" secondItem="g9U-cy-VfD" secondAttribute="leading" constant="137" id="YSM-aA-UPd"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ils-b7-DXp"/>
                     <connections>
