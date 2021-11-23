@@ -15,8 +15,10 @@ class StartGameViewViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         print("first controller IN GAME")
-        let image1=UIImage(named: "waterSplash")
-        view.backgroundColor = UIColor(patternImage: image1!)
+        let backgroundImage = UIImage(named: "waterSplash")
+        view.backgroundColor = UIColor(patternImage: backgroundImage!)
+        //view.backgroundColor = UIColor(backgroundImage!)
+
     }
     @IBAction func showInstructions(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
