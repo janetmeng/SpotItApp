@@ -20,12 +20,20 @@ class InstructionsViewController: UIViewController {
         startGame.center.x = self.view.center.x
     }
     
+    
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation){    //when device has rotated horizontal
+        print("device has rotated")
+        viewDidLoad()
+    }
+    
     @IBAction func pressToStartGame(_ sender: Any) {
         print("start playing, the button was pressed")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "StartGameViewId")
         self.navigationController?.pushViewController(vc, animated: true)
     }
+  
     
     @IBAction func pressToReturnToMainMenu(_ sender: Any) {
         print("stop playing & return to main menu, the button was pressed")

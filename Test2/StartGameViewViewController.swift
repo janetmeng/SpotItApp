@@ -10,16 +10,22 @@ import UIKit
 class StartGameViewViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    @IBOutlet weak var startGameButton: UIButton!
+    
+    @IBOutlet weak var howToPlayButton: UIButton!
+    
+    
     override func viewDidLoad(){
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
         print("first controller IN GAME")
         let backgroundImage = UIImage(named: "waterSplash")
         view.backgroundColor = UIColor(patternImage: backgroundImage!)
-        //view.backgroundColor = UIColor(backgroundImage!)
-
+        
+        howToPlayButton.center.x = self.view.center.x
+        startGameButton.center.x = self.view.center.x
     }
+    
     @IBAction func showInstructions(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let gameoverView = storyboard.instantiateViewController(withIdentifier: "instructionsvc")
