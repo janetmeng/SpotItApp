@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 private let reuseIdentifier = "Cell"
 
@@ -85,6 +86,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     private var previouscell1: IndexPath = IndexPath(row: 0, section: 2)  // previous cell pressed in card 1 (we keep record)
     private var previouscell2: IndexPath = IndexPath(row: 0, section: 2)  //same as above for card 2
     
+    private var player: AVAudioPlayer!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,13 +145,14 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         }
         
         if (counter<0){
+            playIncorrectAnswerAudio()
             decknumber+=1
             if (decknumber<=deck.count - 2){
                 print("Deck number = " + String(decknumber))
                 print("Number of decks = " + String(deck.count))
                 tappedSymbol1 = Symbol(image: "", name: "")
                 tappedSymbol2 = Symbol(image: "", name: "")
-                score-=10
+                score-=8
                 if (score<0){
                     score=0
                 }
@@ -156,7 +160,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 timer.invalidate()
                 counter=maxseconds
                 collectionView.reloadData()
-            } else { //decknumber is 56 (last set of cards){
+            } else { //decknumber is 56 (last set of cards)
                 print("End of game. We have displayed all the decks. Launch PopOver View")
                 print("Deck number = " + String(decknumber))
                 timer.invalidate()
@@ -206,10 +210,10 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func findPairs(_ myCellIndex: IndexPath){
-        let res = get_symbol(x: myCellIndex.section + decknumber, y: myCellIndex.row)   // tapped 1 time (on the symbol). means the symbol has been selected
+        let res = get_symbol(x: myCellIndex.section + decknumber, y: myCellIndex.row)   // tapped 1 time on the symbol, the symbol has been selected
         
         if (myCellIndex.section == 0){
-            pressedcard1[myCellIndex.row] = !pressedcard1[myCellIndex.row]   //NEW
+            pressedcard1[myCellIndex.row] = !pressedcard1[myCellIndex.row]
             tappedSymbol1=Symbol(image:res[1],name:res[2])
             print("section 0 ; ")
             print(tappedSymbol1)
@@ -265,6 +269,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 print("Number of decks = " + String(deck.count))
                 
                 score += 8
+                playCorrectAnswerAudio()
                 tappedSymbol1 = Symbol(image: "", name: "")
                 tappedSymbol2 = Symbol(image: "", name: "")
             
@@ -282,11 +287,25 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 counter=maxseconds
                 decknumber=0
                 reinitarrays()
+                                                                                          
                 collectionView.reloadData()  // try to play again (After button "play again was pressed")
             }
-        }
+        }// else{
+           // playIncorrectAnswerAudio()
+        //}
     }
     
+    func playCorrectAnswerAudio() {
+        let url = Bundle.main.url(forResource: "correctt", withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+    }
+    func playIncorrectAnswerAudio() {
+        let url = Bundle.main.url(forResource: "incorrect", withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+    }
+
     func reinitarrays(){ // function to reinitialize the state of the tapped symbols (1 is for card1.  2 is for card 2)
         pressedcard1 = [false,false,false,false,false,false,false,false]
         pressedcard2 = [false,false,false,false,false,false,false,false]

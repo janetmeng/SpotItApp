@@ -14,6 +14,14 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        let backgroundImage = UIImage.init(named: "background-gameover")
+        let backgroundImageView = UIImageView.init(frame: self.view.frame)
+
+        backgroundImageView.image = backgroundImage
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.alpha = 0.5
+
+        self.view.insertSubview(backgroundImageView, at: 0)
         // Do any additional setup after loading the view.
     }
     
