@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct Symbol {
     var image:String = ""
     var name:String = ""

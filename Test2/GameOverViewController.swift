@@ -10,6 +10,7 @@ import UIKit
 class GameOverViewController: UIViewController {
     @IBOutlet weak var playAgain: UIButton!
     @IBOutlet weak var backToMainMenu: UIButton!
+    @IBOutlet weak var finalScore: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,12 @@ class GameOverViewController: UIViewController {
         backgroundImageView.image = backgroundImage
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.alpha = 0.5
-
         self.view.insertSubview(backgroundImageView, at: 0)
+        
+        finalScore.center.x=self.view.center.x
+       // finalScore.text = "Your Score: \(score)"
+        finalScore.textColor=UIColor.red
+        finalScore.font=UIFont(name: "Arial", size: 36)
         // Do any additional setup after loading the view.
     }
     

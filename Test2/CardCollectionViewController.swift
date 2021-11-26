@@ -1,14 +1,9 @@
-//
-//  CardCollectionViewController.swift
-//  Test2
-//
-//  Created by Janet Meng on 10/18/21.
-//
-
 import UIKit
 import AVFoundation
 
 private let reuseIdentifier = "Cell"
+private var player: AVAudioPlayer!
+
 
 class CardCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         
@@ -81,16 +76,41 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     private var mysectionheader: CardCollectionReusableView = CardCollectionReusableView()
     private var score: Int = 0
     
+    //struct MyVariables {
+    //    static var score = 0                      // this is what I tried
+    //}
+    
+    //let theScore = MyVariables.score
+    
     private var pressedcard1: [Bool]=[false,false,false,false,false,false,false,false]  //no cell was pressed on card 1 at beginning. This boolean serves to keep track of the currently selected symbol on card 1 (selected-> true.  not selected-> false)
     private var pressedcard2: [Bool]=[false,false,false,false,false,false,false,false]  //no cell was pressed on card 2 at beginning
     private var previouscell1: IndexPath = IndexPath(row: 0, section: 2)  // previous cell pressed in card 1 (we keep record)
     private var previouscell2: IndexPath = IndexPath(row: 0, section: 2)  //same as above for card 2
     
-    private var player: AVAudioPlayer!
+    private let url1 = Bundle.main.url(forResource: "correctt", withExtension: "mp3")
+    private let url2 = Bundle.main.url(forResource: "incorrect", withExtension: "mp3")
+    private var player1: AVAudioPlayer!
+    private var player2: AVAudioPlayer!
     
+    private var win: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            self.player1 = try AVAudioPlayer(contentsOf: url1!)
+        }
+        catch {
+            print("error loading mp3 1")
+        }
+
+            
+        do {
+            self.player2 = try AVAudioPlayer(contentsOf: url2!)
+        }
+        catch {
+            print("error loading mp3 2")
+        }
+
         self.navigationItem.setHidesBackButton(true, animated: true)
         deck.shuffle()
         // Do any additional setup after loading the view.
@@ -123,24 +143,34 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         if (indexPath.section == 0){ //master card (card at top of phone screen)
             let indexIntoNestedArray1 = deck[decknumber][indexPath.row]
             let theSymbol1 = symbols[indexIntoNestedArray1-1]
-            cell.symbolImageView.image = UIImage(named: theSymbol1.name)
+            cell.symbolImageView.image = UIImage(named: theSymbol1.name)?.rotated2(degrees: Double.random(in: -90..<91))
+           // cell.symbolImageView.image = UIImage(named: theSymbol1.name)
         }
         else if (indexPath.section == 1 && (decknumber <= deck.count - 2)){ //player's card (card at bottom of phone screen)
             let indexIntoNestedArray2 = deck[decknumber+1][indexPath.row]
             let theSymbol2 = symbols[indexIntoNestedArray2-1]
-            cell.symbolImageView.image = UIImage(named: theSymbol2.name)
+            cell.symbolImageView.image = UIImage(named: theSymbol2.name)?.rotated2(degrees: Double.random(in: -90..<91))
+            //cell.symbolImageView.image = UIImage(named: theSymbol2.name)
+
         }
-       //Configure the cell
+        //Configure the cell
         return cell
     }
     
     // called every time interval from the timer
     @objc func timerAction(){
+        if (win == true){
+            Thread.sleep(forTimeInterval: 0.5)
+            clear_all_highlighted_cells_section()
+            timer.invalidate()
+            collectionView.reloadData()
+            win = false
+        } // will run cellForItemAt method to redraw the 2 cards
         counter -= 1
-        if (counter > 1){
+        if (counter > 1 || counter == 0){
             mysectionheader.sectionHeaderTimer.text = String(counter) + " seconds left"
             
-        } else if (counter <= 1){
+        } else if (counter == 1){
             mysectionheader.sectionHeaderTimer.text = String(counter) + " second left"
         }
         
@@ -152,7 +182,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 print("Number of decks = " + String(deck.count))
                 tappedSymbol1 = Symbol(image: "", name: "")
                 tappedSymbol2 = Symbol(image: "", name: "")
-                score-=8
+                score -= 4
                 if (score<0){
                     score=0
                 }
@@ -167,13 +197,15 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 showGameOver()
                 counter=maxseconds
                 decknumber=0
-                collectionView.reloadData()  // try to play again (After button "play again was pressed")
+                collectionView.reloadData()  // try to play again (after button "play again was pressed")
             }
         }
     }
  
     @IBAction func quitGame(_ sender: Any) {
         print("stop playing & return to main menu, the button was pressed")
+        
+        timer.invalidate()
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -262,7 +294,27 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             self.previouscell2 = myCellIndex
         }
         
-        if (tappedSymbol1.name==tappedSymbol2.name){
+        if (tappedSymbol1.name == tappedSymbol2.name){
+            if (myCellIndex.section == 1)         // NEW on 11/24/2021
+             { let cell1 = collectionView.cellForItem(at: previouscell1) as! CardCollectionViewCell
+                cell1.layer.borderWidth = 3.0
+                cell1.layer.borderColor = UIColor.green.cgColor
+                
+                let cell2 = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
+                cell2.layer.borderWidth = 3.0
+                cell2.layer.borderColor = UIColor.green.cgColor
+            }
+             else if (myCellIndex.section == 0)    // NEW on 11/24/2021
+             {
+                 let cell2 = collectionView.cellForItem(at: previouscell2) as! CardCollectionViewCell
+                    cell2.layer.borderWidth = 3.0
+                    cell2.layer.borderColor = UIColor.green.cgColor
+                    
+                    let cell1 = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
+                    cell1.layer.borderWidth = 3.0
+                    cell1.layer.borderColor = UIColor.green.cgColor
+             }
+            
             decknumber+=1
             if (decknumber <= deck.count - 2){
                 print("Deck number = " + String(decknumber))
@@ -273,37 +325,33 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 tappedSymbol1 = Symbol(image: "", name: "")
                 tappedSymbol2 = Symbol(image: "", name: "")
             
-                clear_all_highlighted_cells_section()   // clear all selections
-                timer.invalidate()
                 counter=maxseconds
                 reinitarrays()
-                collectionView.reloadData() // will run cellForItemAt method to redraw the 2 cards
+                win = true
             }
             else{
                 print("End of game, we have displayed all the decks. Launch PopOver View")
                 print("Deck number = " + String(decknumber))
-                timer.invalidate()
                 showGameOver()
                 counter=maxseconds
                 decknumber=0
                 reinitarrays()
-                                                                                          
-                collectionView.reloadData()  // try to play again (After button "play again was pressed")
+                win = true
             }
-        }// else{
-           // playIncorrectAnswerAudio()
-        //}
+        } else if (tappedSymbol1.name != tappedSymbol2.name && !tappedSymbol1.name.isEmpty && !tappedSymbol2.name.isEmpty){
+            playIncorrectAnswerAudio()
+        }
     }
     
     func playCorrectAnswerAudio() {
-        let url = Bundle.main.url(forResource: "correctt", withExtension: "mp3")
-        player = try! AVAudioPlayer(contentsOf: url!)
-        player.play()
+      //  let url = Bundle.main.url(forResource: "correctt", withExtension: "mp3")
+      //  player = try! AVAudioPlayer(contentsOf: url!)
+        player1.play()
     }
     func playIncorrectAnswerAudio() {
-        let url = Bundle.main.url(forResource: "incorrect", withExtension: "mp3")
-        player = try! AVAudioPlayer(contentsOf: url!)
-        player.play()
+     //   let url = Bundle.main.url(forResource: "incorrect", withExtension: "mp3")
+     //   player = try! AVAudioPlayer(contentsOf: url!)
+        player2.play()
     }
 
     func reinitarrays(){ // function to reinitialize the state of the tapped symbols (1 is for card1.  2 is for card 2)
@@ -344,7 +392,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 sectionHeader.sectionHeaderTimer.textColor=UIColor.black
                 sectionHeader.sectionHeaderTimer.text=String(counter) + " seconds left"
                 
-                sectionHeader.sectionHeaderlabel.center.x=self.view.center.x    
+                sectionHeader.sectionHeaderlabel.center.x=self.view.center.x
                 sectionHeader.sectionHeaderlabel.text = "Score: \(score)"
                 sectionHeader.sectionHeaderlabel.textColor=UIColor.red
                 sectionHeader.sectionHeaderlabel.font=UIFont(name: "Arial", size: 44)
@@ -364,7 +412,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
                 sectionHeader.sectionHeaderlabel.text = "Score: \(score)"
                 sectionHeader.sectionHeaderlabel.textColor=UIColor.white
-                sectionHeader.sectionHeaderlabel.font=UIFont(name: "Arial", size: 48)
+                sectionHeader.sectionHeaderlabel.font=UIFont(name: "Arial", size: 44)
                 
                 sectionHeader.sectionHeaderTimer.text=String(counter) + " seconds left"
                 sectionHeader.sectionHeaderTimer.textColor = UIColor.white
@@ -389,6 +437,60 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         return [section, theSymbol.image, theSymbol.name,String(y)]
     }
     
+}
+    extension UIImage {    //  https://stackoverflow.com/questions/27092354/rotating-uiimage-in-swift/29753437
+        func withSize(_ width: CGFloat, _ height: CGFloat) -> UIImage {
+            let target = CGSize(width: width,height:  height)
+            
+            var scaledImageRect = CGRect.zero
+            let aspectWidth:CGFloat = target.width / self.size.width
+            let aspectHeight:CGFloat = target.height / self.size.height
+            let aspectRatio:CGFloat = min(aspectWidth, aspectHeight)
+            
+            scaledImageRect.size.width = self.size.width * aspectRatio
+            scaledImageRect.size.height = self.size.height * aspectRatio
+            scaledImageRect.origin.x = (target.width - scaledImageRect.size.width) / 2.0
+            scaledImageRect.origin.y = (target.height - scaledImageRect.size.height) / 2.0
+
+            UIGraphicsBeginImageContextWithOptions(target, false, 0)
+
+            self.draw(in: scaledImageRect)
+
+            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+
+            return scaledImage!
+        }
+
+        func rotated2(degrees: Double) -> UIImage {
+            let radians = CGFloat(Double.pi * degrees / 180)
+
+            var rotatedViewBox: UIView? = UIView(frame: CGRect(x: 0, y: 0, width: size.width * scale, height: size.height * scale))
+            let t = CGAffineTransform(rotationAngle: radians)
+            rotatedViewBox!.transform = t
+            let rotatedSize = rotatedViewBox!.frame.size
+            rotatedViewBox = nil
+
+            // Create the bitmap context
+            UIGraphicsBeginImageContext(rotatedSize)
+            let bitmap = UIGraphicsGetCurrentContext()!
+
+            // Move the origin to the middle of the image so we will rotate and scale around the center.
+            bitmap.translateBy(x: rotatedSize.width/2, y: rotatedSize.height/2)
+
+            //   // Rotate the image context
+            bitmap.rotate(by: radians)
+
+            // Now, draw the rotated/scaled image into the context
+            bitmap.scaleBy(x: 1.0, y: -1.0)
+            bitmap.draw(cgImage!, in: CGRect(x:-size.width * scale / 2, y: -size.height * scale / 2, width: size.width * scale, height: size.height * scale))
+
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+
+            return newImage.withSize(newImage.size.width/scale, newImage.size.height/scale)
+        }
+    }
   /*
     // MARK: UICollectionViewDelegate
 
@@ -410,4 +512,4 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
 
     }
     */
-}
+
