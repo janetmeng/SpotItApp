@@ -14,5 +14,7 @@ class CardCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var sectionHeaderQuit: UIButton!
     @IBOutlet weak var sectionHeaderCard: UILabel!
 
+    @IBOutlet weak var scoreIcon: UIImageView!
     
+    @IBOutlet weak var timerIcon: UIImageView!
 }

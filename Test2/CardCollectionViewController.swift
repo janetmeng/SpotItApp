@@ -71,16 +71,12 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     private var tappedSymbol2 = Symbol(image: "", name: "")
     private var decknumber: Int = 0    // decknumber starts at 0. incremented at each win
     private var timer: Timer  = Timer()
-    public  let maxseconds: Int = 8  // seconds
-    private var counter: Int = 8  // seconds
+    public  let maxseconds: Int = 1  // seconds
+    private var counter: Int = 1  // seconds
     private var mysectionheader: CardCollectionReusableView = CardCollectionReusableView()
+   // private var score: Int = MyVariables.instance.score
     private var score: Int = 0
-    
-    //struct MyVariables {
-    //    static var score = 0                      // this is what I tried
-    //}
-    
-    //let theScore = MyVariables.score
+
     
     private var pressedcard1: [Bool]=[false,false,false,false,false,false,false,false]  //no cell was pressed on card 1 at beginning. This boolean serves to keep track of the currently selected symbol on card 1 (selected-> true.  not selected-> false)
     private var pressedcard2: [Bool]=[false,false,false,false,false,false,false,false]  //no cell was pressed on card 2 at beginning
@@ -111,7 +107,9 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             print("error loading mp3 2")
         }
 
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationItem.setHidesBackButton(false, animated: true)
+        self.navigationItem.backButtonTitle = "Quit Game"
+
         deck.shuffle()
         // Do any additional setup after loading the view.
     }
@@ -144,14 +142,11 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             let indexIntoNestedArray1 = deck[decknumber][indexPath.row]
             let theSymbol1 = symbols[indexIntoNestedArray1-1]
             cell.symbolImageView.image = UIImage(named: theSymbol1.name)?.rotated2(degrees: Double.random(in: -90..<91))
-           // cell.symbolImageView.image = UIImage(named: theSymbol1.name)
         }
         else if (indexPath.section == 1 && (decknumber <= deck.count - 2)){ //player's card (card at bottom of phone screen)
             let indexIntoNestedArray2 = deck[decknumber+1][indexPath.row]
             let theSymbol2 = symbols[indexIntoNestedArray2-1]
             cell.symbolImageView.image = UIImage(named: theSymbol2.name)?.rotated2(degrees: Double.random(in: -90..<91))
-            //cell.symbolImageView.image = UIImage(named: theSymbol2.name)
-
         }
         //Configure the cell
         return cell
@@ -201,19 +196,20 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             }
         }
     }
- 
+    
+ /*
     @IBAction func quitGame(_ sender: Any) {
         print("stop playing & return to main menu, the button was pressed")
-        
         timer.invalidate()
         navigationController?.popToRootViewController(animated: true)
     }
+ */
     
     @IBAction func showGameOver(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let gameoverView = storyboard.instantiateViewController(withIdentifier: "modal1")
         self.navigationController?.pushViewController(gameoverView, animated: true)
-        //show(gameoverView, sender: self)
+        MyVariables.instance.score = score
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -234,7 +230,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
          return 0
      }
-    
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool{
         findPairs(indexPath)
@@ -295,7 +290,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         }
         
         if (tappedSymbol1.name == tappedSymbol2.name){
-            if (myCellIndex.section == 1)         // NEW on 11/24/2021
+            if (myCellIndex.section == 1)
              { let cell1 = collectionView.cellForItem(at: previouscell1) as! CardCollectionViewCell
                 cell1.layer.borderWidth = 3.0
                 cell1.layer.borderColor = UIColor.green.cgColor
@@ -304,7 +299,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 cell2.layer.borderWidth = 3.0
                 cell2.layer.borderColor = UIColor.green.cgColor
             }
-             else if (myCellIndex.section == 0)    // NEW on 11/24/2021
+             else if (myCellIndex.section == 0)
              {
                  let cell2 = collectionView.cellForItem(at: previouscell2) as! CardCollectionViewCell
                     cell2.layer.borderWidth = 3.0
@@ -344,13 +339,9 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func playCorrectAnswerAudio() {
-      //  let url = Bundle.main.url(forResource: "correctt", withExtension: "mp3")
-      //  player = try! AVAudioPlayer(contentsOf: url!)
         player1.play()
     }
     func playIncorrectAnswerAudio() {
-     //   let url = Bundle.main.url(forResource: "incorrect", withExtension: "mp3")
-     //   player = try! AVAudioPlayer(contentsOf: url!)
         player2.play()
     }
 
@@ -386,50 +377,63 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         print("HEADER: " + String(indexPath.section) + " : " + String(indexPath.row))
         if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? CardCollectionReusableView{
-            
+        
             if (indexPath.section == 0){
+                sectionHeader.sectionHeaderTimer.isHidden = false
                 sectionHeader.sectionHeaderTimer.center.x=self.view.center.x
-                sectionHeader.sectionHeaderTimer.textColor=UIColor.black
+                sectionHeader.sectionHeaderTimer.textColor=UIColor(red: 84 / 255, green: 130 / 255, blue: 255 / 255, alpha: 1)
+                sectionHeader.sectionHeaderTimer.font=UIFont(name: "Arial", size: 14)
                 sectionHeader.sectionHeaderTimer.text=String(counter) + " seconds left"
                 
+                sectionHeader.sectionHeaderlabel.isHidden = false
                 sectionHeader.sectionHeaderlabel.center.x=self.view.center.x
                 sectionHeader.sectionHeaderlabel.text = "Score: \(score)"
-                sectionHeader.sectionHeaderlabel.textColor=UIColor.red
-                sectionHeader.sectionHeaderlabel.font=UIFont(name: "Arial", size: 44)
+                sectionHeader.sectionHeaderlabel.textColor=UIColor.white
+                sectionHeader.sectionHeaderlabel.font=UIFont(name: "Arial", size: 26)
             
+                sectionHeader.sectionHeaderCard.isHidden = false
                 sectionHeader.sectionHeaderCard.center.x=self.view.center.x
-                sectionHeader.sectionHeaderCard.font=UIFont(name: "Arial", size: 18)
+                sectionHeader.sectionHeaderCard.font=UIFont(name: "Arial", size: 14)
                 sectionHeader.sectionHeaderCard.textColor = UIColor.black
                 sectionHeader.sectionHeaderCard.text = "Card 1"
                 
-                sectionHeader.sectionHeaderQuit.center.x=self.view.center.x
-                sectionHeader.sectionHeaderQuit.isHidden = false
-
+                sectionHeader.scoreIcon.isHidden = false
+                sectionHeader.scoreIcon.center.x = self.view.center.x
+                
+                sectionHeader.timerIcon.isHidden = false
+                sectionHeader.timerIcon.center.x = self.view.center.x
+                    
                 mysectionheader = sectionHeader
                 // start the timer
                 timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
             } else if (indexPath.section == 1){
-    
-                sectionHeader.sectionHeaderlabel.text = "Score: \(score)"
-                sectionHeader.sectionHeaderlabel.textColor=UIColor.white
-                sectionHeader.sectionHeaderlabel.font=UIFont(name: "Arial", size: 44)
-                
-                sectionHeader.sectionHeaderTimer.text=String(counter) + " seconds left"
-                sectionHeader.sectionHeaderTimer.textColor = UIColor.white
-          
+                sectionHeader.sectionHeaderCard.isHidden = false
                 sectionHeader.sectionHeaderCard.center.x=self.view.center.x
-                sectionHeader.sectionHeaderCard.font=UIFont(name: "Arial", size: 18)
-                sectionHeader.sectionHeaderCard.textColor = UIColor.black
                 sectionHeader.sectionHeaderCard.text = "Card 2"
+                sectionHeader.sectionHeaderCard.font=UIFont(name: "Arial", size: 14)
+                sectionHeader.sectionHeaderCard.textColor = UIColor.black
+                
+                sectionHeader.sectionHeaderlabel.isHidden = true
+
+                sectionHeader.sectionHeaderTimer.isHidden = true
            
-                sectionHeader.sectionHeaderQuit.center.x=self.view.center.x
-                sectionHeader.sectionHeaderQuit.isHidden = true
+                sectionHeader.scoreIcon.isHidden = true
+                
+                sectionHeader.timerIcon.isHidden = true
             }
             return sectionHeader
         }
         return UICollectionReusableView()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
+        if (section == 1){
+            return CGSize(width: mysectionheader.frame.width, height: 120)
+        } else{
+            return CGSize(width: mysectionheader.frame.width, height: 120)
+        }
+    }
+
     func get_symbol(x: Int,y: Int) -> Array<String>{
         let section :String = String(format: "%d", x)
         let indexIntoNestedArray1 = deck[x][y]
@@ -491,6 +495,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             return newImage.withSize(newImage.size.width/scale, newImage.size.height/scale)
         }
     }
+
   /*
     // MARK: UICollectionViewDelegate
 

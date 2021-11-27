@@ -27,7 +27,10 @@ class StartGameViewViewController: UIViewController {
         backgroundImageView.alpha = 0.5
 
         self.view.insertSubview(backgroundImageView, at: 0)
+        
+        self.navigationItem.backButtonTitle = "Quit Game"
     }
+    
     /*
     override func viewDidLoad(){
         super.viewDidLoad()

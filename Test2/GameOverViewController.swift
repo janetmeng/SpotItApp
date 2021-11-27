@@ -24,7 +24,7 @@ class GameOverViewController: UIViewController {
         self.view.insertSubview(backgroundImageView, at: 0)
         
         finalScore.center.x=self.view.center.x
-       // finalScore.text = "Your Score: \(score)"
+        finalScore.text = "Your Score: \(MyVariables.instance.score)"
         finalScore.textColor=UIColor.red
         finalScore.font=UIFont(name: "Arial", size: 36)
         // Do any additional setup after loading the view.

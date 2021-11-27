@@ -129,43 +129,41 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-Sl-HcB">
-                                    <rect key="frame" x="0.0" y="4" width="414" height="21"/>
+                                    <rect key="frame" x="-28" y="6" width="414" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlC-Dr-DGk">
-                                    <rect key="frame" x="0.0" y="27" width="414" height="31"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                    <color key="textColor" systemColor="systemRedColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1i-CM-Wg7">
-                                    <rect key="frame" x="0.0" y="61" width="414" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <state key="normal" title="Quit Game">
-                                        <color key="titleColor" systemColor="labelColor"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="quitGame:" destination="JN3-5O-Qg8" eventType="touchDown" id="lCm-bf-XT0"/>
-                                    </connections>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-Lm-bAP">
-                                    <rect key="frame" x="0.0" y="85" width="414" height="21"/>
+                                    <rect key="frame" x="0.0" y="93" width="414" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="number" translatesAutoresizingMaskIntoConstraints="NO" id="RRK-6d-WKZ">
+                                    <rect key="frame" x="79" y="37" width="257" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="uDk-xf-bcS">
+                                    <rect key="frame" x="93" y="-4" width="229" height="42"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlC-Dr-DGk">
+                                    <rect key="frame" x="0.0" y="50" width="414" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                    <color key="textColor" systemColor="systemRedColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <connections>
+                                <outlet property="scoreIcon" destination="RRK-6d-WKZ" id="KCc-m0-niX"/>
                                 <outlet property="sectionHeaderCard" destination="C8k-Lm-bAP" id="cQj-nR-1jb"/>
-                                <outlet property="sectionHeaderQuit" destination="H1i-CM-Wg7" id="Xh9-ov-XCt"/>
                                 <outlet property="sectionHeaderTimer" destination="xeK-Sl-HcB" id="lvT-7n-A3B"/>
                                 <outlet property="sectionHeaderlabel" destination="JlC-Dr-DGk" id="adL-23-WGq"/>
+                                <outlet property="timerIcon" destination="uDk-xf-bcS" id="SYV-Nl-0Zh"/>
                             </connections>
                         </collectionReusableView>
                         <connections>
@@ -348,9 +346,8 @@ Good luck and have fun playing Search the Sea!</string>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="number" width="300" height="122"/>
+        <image name="time" width="149" height="49"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
