@@ -23,7 +23,6 @@
 		79A471E8271DD4A100DDD3AA /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A471E7271DD4A100DDD3AA /* Symbol.swift */; };
 		79B4946E274EF2460078BD2D /* correctt.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79B4946D274EF2460078BD2D /* correctt.mp3 */; };
 		79B49470274EF25E0078BD2D /* incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 79B4946F274EF25E0078BD2D /* incorrect.mp3 */; };
-		79FF1B102750ADB90055E0A1 /* MyVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FF1B0F2750ADB80055E0A1 /* MyVariables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +44,6 @@
 		79A471E7271DD4A100DDD3AA /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
 		79B4946D274EF2460078BD2D /* correctt.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correctt.mp3; sourceTree = "<group>"; };
 		79B4946F274EF25E0078BD2D /* incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = incorrect.mp3; sourceTree = "<group>"; };
-		79FF1B0F2750ADB80055E0A1 /* MyVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVariables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +92,6 @@
 				79225C2827189B4B00D5CC69 /* LaunchScreen.storyboard */,
 				79225C2B27189B4B00D5CC69 /* Info.plist */,
 				799456E02748EBC800D29E15 /* InstructionsViewController.swift */,
-				79FF1B0F2750ADB80055E0A1 /* MyVariables.swift */,
 			);
 			path = Test2;
 			sourceTree = "<group>";
@@ -186,7 +183,6 @@
 				79225C1E27189B4800D5CC69 /* AppDelegate.swift in Sources */,
 				79A471E4271DD19000DDD3AA /* CardCollectionViewCell.swift in Sources */,
 				799456E12748EBC900D29E15 /* InstructionsViewController.swift in Sources */,
-				79FF1B102750ADB90055E0A1 /* MyVariables.swift in Sources */,
 				799456DD27482B4B00D29E15 /* GameOverViewController.swift in Sources */,
 				79225C2027189B4800D5CC69 /* SceneDelegate.swift in Sources */,
 				799456DF2748C44000D29E15 /* InGameViewController.swift in Sources */,

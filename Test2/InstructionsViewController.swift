@@ -15,18 +15,21 @@ class InstructionsViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-       // scrollViewforInstructions.contentSize=CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        
         scrollViewforInstructions.contentSize=CGSize(width: scrollViewforInstructions.frame.width * 1, height: scrollViewforInstructions.frame.height * 1.5)
         print("scrollViewForInstructions= \(scrollViewforInstructions.frame.width)") // to debug
         print("scrollViewForInstructions= \(scrollViewforInstructions.frame.height * 1.5)") // to debug
         scrollViewforInstructions.center.x = self.view.center.x
-       // instructionsDescriptionn.center.x = self.view.center.x
         instructionsTitle.center.x = self.view.center.x
         startGame.center.x = self.view.center.x
+        
+        //need this or not?
+        let backBarButtton = UIBarButtonItem(title: "Back to Main Menu", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
     }
   
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation){    //when device has rotated horizontal
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation){ //when device has rotated horizontal
         print("device has rotated")
         viewDidLoad()
     }
@@ -35,6 +38,8 @@ class InstructionsViewController: UIViewController {
         print("start playing, the button was pressed")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "StartGameViewId")
+        let backBarButtton = UIBarButtonItem(title: "Quit Game", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
         self.navigationController?.pushViewController(vc, animated: true)
     }
   

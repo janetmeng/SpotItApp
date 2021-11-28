@@ -8,9 +8,13 @@
 import UIKit
 
 class GameOverViewController: UIViewController {
+    @IBOutlet weak var gameOverLabel: UILabel!
     @IBOutlet weak var playAgain: UIButton!
     @IBOutlet weak var backToMainMenu: UIButton!
     @IBOutlet weak var finalScore: UILabel!
+    @IBOutlet weak var playAgainIcon: UIImageView!
+    @IBOutlet weak var backToMainMenuIcon: UIImageView!
+    var score: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +27,22 @@ class GameOverViewController: UIViewController {
         backgroundImageView.alpha = 0.5
         self.view.insertSubview(backgroundImageView, at: 0)
         
+        gameOverLabel.center.x = self.view.center.x
+        
         finalScore.center.x=self.view.center.x
-        finalScore.text = "Your Score: \(MyVariables.instance.score)"
+        finalScore.text = "Your Score: \(score)"
         finalScore.textColor=UIColor.red
         finalScore.font=UIFont(name: "Arial", size: 36)
-        // Do any additional setup after loading the view.
+        
+        playAgain.center.x=self.view.center.x
+        playAgainIcon.center.x = self.view.center.x
+        backToMainMenu.center.x=self.view.center.x
+        backToMainMenuIcon.center.x = self.view.center.x
+
     }
     
     @IBAction func pressToPlayAgain(_ sender: Any) {
         print("play again, the button was pressed")
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.navigationController?.popViewController(animated: true)
     }
     

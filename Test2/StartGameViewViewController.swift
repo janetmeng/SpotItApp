@@ -9,48 +9,51 @@ import UIKit
 
 class StartGameViewViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
-    
     @IBOutlet weak var startGameButton: UIButton!
-    
     @IBOutlet weak var howToPlayButton: UIButton!
     
+    @IBOutlet weak var startGameIcon: UIImageView!
+    @IBOutlet weak var howToPlayIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print("first controller IN GAME")
+        
+        //background
         let backgroundImage = UIImage.init(named: "background")
         let backgroundImageView = UIImageView.init(frame: self.view.frame)
-
         backgroundImageView.image = backgroundImage
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.alpha = 0.5
-
         self.view.insertSubview(backgroundImageView, at: 0)
         
-        self.navigationItem.backButtonTitle = "Quit Game"
+        startGameButton.center.x=self.view.center.x
+        howToPlayButton.center.x=self.view.center.x
+
+        startGameIcon.center.x=self.view.center.x
+        howToPlayIcon.center.x=self.view.center.x
     }
-    
-    /*
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("first controller IN GAME")
-        let backgroundImage = UIImage(named: "waterSplash")
-        view.backgroundColor = UIColor(patternImage: backgroundImage!)
-        
-        howToPlayButton.center.x = self.view.center.x
-        startGameButton.center.x = self.view.center.x
-    }
-    */
     
     @IBAction func showInstructions(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let gameoverView = storyboard.instantiateViewController(withIdentifier: "instructionsvc")
+        
+        let backBarButtton = UIBarButtonItem(title: "Back to Main Menu", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
+        
         self.navigationController?.pushViewController(gameoverView, animated: true)
     }
 
-
+    @IBAction func startTheGame(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameoverView = storyboard.instantiateViewController(withIdentifier: "StartGameViewId")
+        
+        let backBarButtton = UIBarButtonItem(title: "Quit Game", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backBarButtton
+        
+        self.navigationController?.pushViewController(gameoverView, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

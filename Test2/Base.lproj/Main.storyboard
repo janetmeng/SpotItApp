@@ -17,16 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFL-xA-Efz">
-                                <rect key="frame" x="0.0" y="374" width="414" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Start Game">
-                                    <color key="titleColor" systemColor="systemPinkColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="JN3-5O-Qg8" kind="show" id="sCS-wx-DJa"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qtT-uq-Ifd">
                                 <rect key="frame" x="133" y="88" width="148" height="128"/>
                                 <constraints>
@@ -40,7 +30,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="How to Play">
-                                    <color key="titleColor" systemColor="systemPinkColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="showInstructions:" destination="4ed-AR-sEw" eventType="touchDown" id="ok3-eg-Xjb"/>
@@ -52,6 +42,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="czW-8B-mhv">
+                                <rect key="frame" x="84" y="359" width="247" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="LLY-f1-BEB">
+                                <rect key="frame" x="84" y="461" width="247" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFL-xA-Efz">
+                                <rect key="frame" x="0.0" y="374" width="414" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Start Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTheGame:" destination="4ed-AR-sEw" eventType="touchUpInside" id="Qns-9k-nTd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zrh-T9-0VF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -75,7 +83,10 @@
                     <connections>
                         <outlet property="backgroundImage" destination="qtT-uq-Ifd" id="ykl-kR-Gpj"/>
                         <outlet property="howToPlayButton" destination="FEt-bY-8I3" id="NIL-4Z-Ur3"/>
+                        <outlet property="howToPlayIcon" destination="LLY-f1-BEB" id="kYr-ou-Ynn"/>
+                        <outlet property="startCardCollectionVC" destination="czW-8B-mhv" id="aDF-UU-nit"/>
                         <outlet property="startGameButton" destination="GFL-xA-Efz" id="W6F-TD-WUa"/>
+                        <outlet property="startGameIcon" destination="czW-8B-mhv" id="PuD-h5-yNb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pm-K4-r4W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -128,33 +139,33 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-Sl-HcB">
-                                    <rect key="frame" x="-28" y="6" width="414" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-Lm-bAP">
-                                    <rect key="frame" x="0.0" y="93" width="414" height="18"/>
+                                    <rect key="frame" x="0.0" y="88" width="414" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="number" translatesAutoresizingMaskIntoConstraints="NO" id="RRK-6d-WKZ">
-                                    <rect key="frame" x="79" y="37" width="257" height="56"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="RRK-6d-WKZ">
+                                    <rect key="frame" x="84" y="38" width="247" height="56"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="uDk-xf-bcS">
-                                    <rect key="frame" x="93" y="-4" width="229" height="42"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timerB" translatesAutoresizingMaskIntoConstraints="NO" id="uDk-xf-bcS">
+                                    <rect key="frame" x="93" y="-6" width="229" height="53"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-Sl-HcB">
+                                    <rect key="frame" x="0.0" y="9" width="414" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlC-Dr-DGk">
-                                    <rect key="frame" x="0.0" y="50" width="414" height="31"/>
+                                    <rect key="frame" x="0.0" y="51" width="414" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                    <color key="textColor" systemColor="systemRedColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -252,17 +263,9 @@ Good luck and have fun playing Search the Sea!</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You finished the game!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1t-Wn-EpI">
-                                <rect key="frame" x="0.0" y="117" width="414" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="dk2-kK-nS1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" systemColor="systemIndigoColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acs-pa-iUp">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acs-pa-iUp">
                                 <rect key="frame" x="0.0" y="479" width="414" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Back to Main Menu">
                                     <color key="titleColor" systemColor="systemIndigoColor"/>
@@ -271,8 +274,9 @@ Good luck and have fun playing Search the Sea!</string>
                                     <action selector="pressToReturnToMainMenu:" destination="Kdp-Di-n3d" eventType="touchDown" id="dVK-bm-jQM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-zl-rdI">
-                                <rect key="frame" x="0.0" y="376" width="414" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-zl-rdI">
+                                <rect key="frame" x="0.0" y="382" width="414" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Play Again">
                                     <color key="titleColor" systemColor="systemIndigoColor"/>
@@ -281,44 +285,45 @@ Good luck and have fun playing Search the Sea!</string>
                                     <action selector="pressToPlayAgain:" destination="Kdp-Di-n3d" eventType="touchDown" id="WEC-M9-VoR"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-ZP-Fbm">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-ZP-Fbm">
                                 <rect key="frame" x="87" y="162" width="240" height="128"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bt6-xV-v6B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bt6-xV-v6B">
                                 <rect key="frame" x="0.0" y="317" width="414" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="RjK-Wd-6GO"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="TIR-DO-BJO">
+                                <rect key="frame" x="81" y="368" width="253" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-1L-13f">
+                                <rect key="frame" x="69" y="456" width="276" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Over!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1t-Wn-EpI">
+                                <rect key="frame" x="0.0" y="105" width="414" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" systemColor="systemIndigoColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kdO-kF-fET"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ldk-zl-rdI" firstAttribute="leading" secondItem="acs-pa-iUp" secondAttribute="leading" id="141-fu-RkQ"/>
-                            <constraint firstItem="Ldk-zl-rdI" firstAttribute="trailing" secondItem="s1t-Wn-EpI" secondAttribute="trailing" id="2rW-6G-CwP"/>
                             <constraint firstItem="GAB-ZP-Fbm" firstAttribute="leading" secondItem="kdO-kF-fET" secondAttribute="leading" constant="87" id="7OE-ad-mnr"/>
-                            <constraint firstItem="GAB-ZP-Fbm" firstAttribute="centerX" secondItem="s1t-Wn-EpI" secondAttribute="centerX" id="87U-Cz-8uf"/>
-                            <constraint firstItem="Bt6-xV-v6B" firstAttribute="leading" secondItem="Ldk-zl-rdI" secondAttribute="leading" id="9Ao-8h-7Cc"/>
-                            <constraint firstItem="Bt6-xV-v6B" firstAttribute="top" secondItem="GAB-ZP-Fbm" secondAttribute="bottom" constant="27" id="DI8-cV-VEL"/>
-                            <constraint firstItem="Ldk-zl-rdI" firstAttribute="top" secondItem="Bt6-xV-v6B" secondAttribute="bottom" constant="20" id="Fyy-8z-ix7"/>
-                            <constraint firstItem="Bt6-xV-v6B" firstAttribute="trailing" secondItem="Ldk-zl-rdI" secondAttribute="trailing" id="Gcn-WZ-JoN"/>
-                            <constraint firstItem="Ldk-zl-rdI" firstAttribute="trailing" secondItem="acs-pa-iUp" secondAttribute="trailing" id="Jtf-0G-wUq"/>
-                            <constraint firstItem="s1t-Wn-EpI" firstAttribute="leading" secondItem="kdO-kF-fET" secondAttribute="leading" id="Nj9-OU-qCX"/>
-                            <constraint firstItem="Ldk-zl-rdI" firstAttribute="top" secondItem="51y-du-3eV" secondAttribute="top" constant="376" id="gjg-Oo-j0Q"/>
-                            <constraint firstItem="s1t-Wn-EpI" firstAttribute="centerX" secondItem="51y-du-3eV" secondAttribute="centerX" id="leX-ht-ffR"/>
-                            <constraint firstItem="GAB-ZP-Fbm" firstAttribute="top" secondItem="s1t-Wn-EpI" secondAttribute="bottom" constant="8" id="qi5-gf-wlw"/>
-                            <constraint firstItem="s1t-Wn-EpI" firstAttribute="top" secondItem="kdO-kF-fET" secondAttribute="top" constant="73" id="tG5-2Q-3fh"/>
-                            <constraint firstItem="acs-pa-iUp" firstAttribute="top" secondItem="Ldk-zl-rdI" secondAttribute="bottom" constant="70" id="vt4-XL-iHu"/>
-                            <constraint firstItem="Ldk-zl-rdI" firstAttribute="leading" secondItem="s1t-Wn-EpI" secondAttribute="leading" id="wAF-16-yyi"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backToMainMenu" destination="acs-pa-iUp" id="6DA-UW-RZt"/>
+                        <outlet property="backToMainMenuIcon" destination="BrQ-1L-13f" id="HoV-JN-3GF"/>
                         <outlet property="finalScore" destination="Bt6-xV-v6B" id="QhZ-66-CNh"/>
+                        <outlet property="gameOverLabel" destination="s1t-Wn-EpI" id="ArC-Re-kB5"/>
                         <outlet property="playAgain" destination="Ldk-zl-rdI" id="5R8-56-kkg"/>
+                        <outlet property="playAgainIcon" destination="TIR-DO-BJO" id="YqN-sw-B2A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jwE-6Z-f8U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -346,8 +351,8 @@ Good luck and have fun playing Search the Sea!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="number" width="300" height="122"/>
-        <image name="time" width="149" height="49"/>
+        <image name="buttonFinal" width="293" height="133"/>
+        <image name="timerB" width="20" height="9"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -359,9 +364,6 @@ Good luck and have fun playing Search the Sea!</string>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
