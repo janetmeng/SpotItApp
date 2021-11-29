@@ -11,6 +11,7 @@ class StartGameViewViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var howToPlayButton: UIButton!
+    @IBOutlet weak var gameLogo: UIImageView!
     
     @IBOutlet weak var startGameIcon: UIImageView!
     @IBOutlet weak var howToPlayIcon: UIImageView!
@@ -20,7 +21,7 @@ class StartGameViewViewController: UIViewController {
         print("first controller IN GAME")
         
         //background
-        let backgroundImage = UIImage.init(named: "background")
+        let backgroundImage = UIImage.init(named: "background-1")
         let backgroundImageView = UIImageView.init(frame: self.view.frame)
         backgroundImageView.image = backgroundImage
         backgroundImageView.contentMode = .scaleAspectFill
@@ -29,7 +30,7 @@ class StartGameViewViewController: UIViewController {
         
         startGameButton.center.x=self.view.center.x
         howToPlayButton.center.x=self.view.center.x
-
+        gameLogo.center.x = self.view.center.x
         startGameIcon.center.x=self.view.center.x
         howToPlayIcon.center.x=self.view.center.x
     }

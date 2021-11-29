@@ -23,25 +23,6 @@
                                     <constraint firstAttribute="height" constant="128" id="Vmt-fI-H0U"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEt-bY-8I3">
-                                <rect key="frame" x="0.0" y="475" width="414" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="ij5-QR-4oj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="How to Play">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="showInstructions:" destination="4ed-AR-sEw" eventType="touchDown" id="ok3-eg-Xjb"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search the Sea" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IfC-Cc-Tzj">
-                                <rect key="frame" x="0.0" y="254" width="414" height="64"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="czW-8B-mhv">
                                 <rect key="frame" x="84" y="359" width="247" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -60,31 +41,39 @@
                                     <action selector="startTheGame:" destination="4ed-AR-sEw" eventType="touchUpInside" id="Qns-9k-nTd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekW-nm-v0x">
+                                <rect key="frame" x="0.0" y="475" width="414" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="How to Play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showInstructions:" destination="4ed-AR-sEw" eventType="touchDown" id="aAq-Qs-e7T"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="VF7-dW-W11">
+                                <rect key="frame" x="49" y="207" width="338" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zrh-T9-0VF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="IfC-Cc-Tzj" firstAttribute="trailing" secondItem="GFL-xA-Efz" secondAttribute="trailing" id="3oa-Hv-t2q"/>
                             <constraint firstItem="qtT-uq-Ifd" firstAttribute="leading" secondItem="Zrh-T9-0VF" secondAttribute="leading" constant="133" id="4H9-F5-Kum"/>
-                            <constraint firstItem="FEt-bY-8I3" firstAttribute="trailing" secondItem="GFL-xA-Efz" secondAttribute="trailing" id="8iW-sq-a93"/>
-                            <constraint firstItem="FEt-bY-8I3" firstAttribute="leading" secondItem="GFL-xA-Efz" secondAttribute="leading" id="OiB-NO-chO"/>
-                            <constraint firstItem="GFL-xA-Efz" firstAttribute="top" secondItem="IfC-Cc-Tzj" secondAttribute="bottom" constant="56" id="Q5L-Dn-N2u"/>
                             <constraint firstItem="GFL-xA-Efz" firstAttribute="centerX" secondItem="qtT-uq-Ifd" secondAttribute="centerX" id="Uxh-vO-3LW"/>
                             <constraint firstItem="GFL-xA-Efz" firstAttribute="leading" secondItem="Zrh-T9-0VF" secondAttribute="leading" id="ae5-1b-ioj"/>
                             <constraint firstItem="GFL-xA-Efz" firstAttribute="centerX" secondItem="2Pr-wU-NFq" secondAttribute="centerX" id="edm-Kk-r8W"/>
                             <constraint firstItem="GFL-xA-Efz" firstAttribute="top" secondItem="2Pr-wU-NFq" secondAttribute="top" constant="374" id="he8-jY-hOr"/>
-                            <constraint firstItem="IfC-Cc-Tzj" firstAttribute="leading" secondItem="GFL-xA-Efz" secondAttribute="leading" id="jXX-81-hLd"/>
-                            <constraint firstItem="FEt-bY-8I3" firstAttribute="top" secondItem="GFL-xA-Efz" secondAttribute="bottom" constant="68" id="luw-bb-lXk"/>
-                            <constraint firstItem="IfC-Cc-Tzj" firstAttribute="top" secondItem="qtT-uq-Ifd" secondAttribute="bottom" constant="38" id="sNM-6O-DrS"/>
                             <constraint firstItem="qtT-uq-Ifd" firstAttribute="top" secondItem="Zrh-T9-0VF" secondAttribute="top" id="xa2-Pi-MrX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TWq-qt-Z3T"/>
                     <connections>
                         <outlet property="backgroundImage" destination="qtT-uq-Ifd" id="ykl-kR-Gpj"/>
-                        <outlet property="howToPlayButton" destination="FEt-bY-8I3" id="NIL-4Z-Ur3"/>
+                        <outlet property="gameLogo" destination="VF7-dW-W11" id="ae7-8a-sGD"/>
+                        <outlet property="howToPlayButton" destination="ekW-nm-v0x" id="CTL-LW-Vg4"/>
                         <outlet property="howToPlayIcon" destination="LLY-f1-BEB" id="kYr-ou-Ynn"/>
-                        <outlet property="startCardCollectionVC" destination="czW-8B-mhv" id="aDF-UU-nit"/>
                         <outlet property="startGameButton" destination="GFL-xA-Efz" id="W6F-TD-WUa"/>
                         <outlet property="startGameIcon" destination="czW-8B-mhv" id="PuD-h5-yNb"/>
                     </connections>
@@ -139,33 +128,33 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="111"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-Lm-bAP">
-                                    <rect key="frame" x="0.0" y="88" width="414" height="17"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="RRK-6d-WKZ">
-                                    <rect key="frame" x="84" y="38" width="247" height="56"/>
+                                    <rect key="frame" x="84" y="32" width="247" height="56"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timerB" translatesAutoresizingMaskIntoConstraints="NO" id="uDk-xf-bcS">
-                                    <rect key="frame" x="93" y="-6" width="229" height="53"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timer" translatesAutoresizingMaskIntoConstraints="NO" id="uDk-xf-bcS">
+                                    <rect key="frame" x="121" y="-77" width="173" height="188"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-Sl-HcB">
-                                    <rect key="frame" x="0.0" y="9" width="414" height="22"/>
+                                    <rect key="frame" x="56" y="6" width="302" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlC-Dr-DGk">
-                                    <rect key="frame" x="0.0" y="51" width="414" height="31"/>
+                                    <rect key="frame" x="0.0" y="45" width="414" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-Lm-bAP">
+                                    <rect key="frame" x="0.0" y="86" width="414" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -263,66 +252,68 @@ Good luck and have fun playing Search the Sea!</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acs-pa-iUp">
-                                <rect key="frame" x="0.0" y="479" width="414" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDl-4x-pFg">
+                                <rect key="frame" x="0.0" y="480" width="414" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Back to Main Menu">
                                     <color key="titleColor" systemColor="systemIndigoColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressToReturnToMainMenu:" destination="Kdp-Di-n3d" eventType="touchDown" id="dVK-bm-jQM"/>
+                                    <action selector="pressToReturnToMainMenu:" destination="Kdp-Di-n3d" eventType="touchDown" id="i9D-Ha-xzj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-zl-rdI">
-                                <rect key="frame" x="0.0" y="382" width="414" height="33"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="TIR-DO-BJO">
+                                <rect key="frame" x="81" y="377" width="253" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmp-Br-bDq">
+                                <rect key="frame" x="0.0" y="391" width="414" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Play Again">
                                     <color key="titleColor" systemColor="systemIndigoColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressToPlayAgain:" destination="Kdp-Di-n3d" eventType="touchDown" id="WEC-M9-VoR"/>
+                                    <action selector="pressToPlayAgain:" destination="Kdp-Di-n3d" eventType="touchDown" id="dZc-v4-djs"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-ZP-Fbm">
-                                <rect key="frame" x="87" y="162" width="240" height="128"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bt6-xV-v6B">
-                                <rect key="frame" x="0.0" y="317" width="414" height="39"/>
+                                <rect key="frame" x="0.0" y="253" width="414" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="TIR-DO-BJO">
-                                <rect key="frame" x="81" y="368" width="253" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-1L-13f">
-                                <rect key="frame" x="69" y="456" width="276" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Over!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1t-Wn-EpI">
-                                <rect key="frame" x="0.0" y="105" width="414" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1t-Wn-EpI">
+                                <rect key="frame" x="0.0" y="105" width="414" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" systemColor="systemIndigoColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-1L-13f">
+                                <rect key="frame" x="61" y="457" width="293" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-ZP-Fbm">
+                                <rect key="frame" x="146" y="137" width="122" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kdO-kF-fET"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GAB-ZP-Fbm" firstAttribute="leading" secondItem="kdO-kF-fET" secondAttribute="leading" constant="87" id="7OE-ad-mnr"/>
+                            <constraint firstItem="s1t-Wn-EpI" firstAttribute="centerX" secondItem="51y-du-3eV" secondAttribute="centerX" id="IOu-TB-kZU"/>
+                            <constraint firstItem="s1t-Wn-EpI" firstAttribute="leading" secondItem="kdO-kF-fET" secondAttribute="leading" id="kkG-Re-GyA"/>
+                            <constraint firstItem="s1t-Wn-EpI" firstAttribute="top" secondItem="kdO-kF-fET" secondAttribute="top" constant="61" id="sy5-t7-Cvn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backToMainMenu" destination="acs-pa-iUp" id="6DA-UW-RZt"/>
+                        <outlet property="backToMainMenu" destination="xDl-4x-pFg" id="xvn-qG-wij"/>
                         <outlet property="backToMainMenuIcon" destination="BrQ-1L-13f" id="HoV-JN-3GF"/>
                         <outlet property="finalScore" destination="Bt6-xV-v6B" id="QhZ-66-CNh"/>
                         <outlet property="gameOverLabel" destination="s1t-Wn-EpI" id="ArC-Re-kB5"/>
-                        <outlet property="playAgain" destination="Ldk-zl-rdI" id="5R8-56-kkg"/>
+                        <outlet property="playAgain" destination="hmp-Br-bDq" id="ehJ-4D-yyT"/>
                         <outlet property="playAgainIcon" destination="TIR-DO-BJO" id="YqN-sw-B2A"/>
                     </connections>
                 </viewController>
@@ -352,7 +343,8 @@ Good luck and have fun playing Search the Sea!</string>
     </scenes>
     <resources>
         <image name="buttonFinal" width="293" height="133"/>
-        <image name="timerB" width="20" height="9"/>
+        <image name="logo" width="394" height="161"/>
+        <image name="timer" width="120" height="120"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
