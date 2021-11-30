@@ -11,7 +11,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                                         Symbol(image: "Buoy", name: "buoy"),
                                         Symbol(image: "Clam", name: "clam"),
                                         Symbol(image: "Clownfish", name: "clownfish-1"),
-                                      //  Symbol(image: "Coastline", name: "coastline"),
                                         Symbol(image: "Compass", name: "compass"),
                                         Symbol(image: "Conch Shell", name: "conchshell"),
                                         Symbol(image: "Coral", name: "coral"),
@@ -161,9 +160,10 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     // called every time interval from the timer
     @objc func timerAction(){
         if (win == true){
+           // Thread.sleep(forTimeInterval: 0.5)
             clear_all_highlighted_cells_section()
             timer.invalidate()
-           
+            
             if (gameover){
                 gameover = false
                 print("just after showGameOver timer !!!!")
@@ -181,12 +181,12 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         } else if (counter == 0){
             mysectionheader.sectionHeaderTimer.text = String(counter) + " second left"
             playIncorrectAnswerAudio()
-        } else if (counter<0){
+        } else if (counter<0) {
             Thread.sleep(forTimeInterval: 0.5)
-            
+           
             if decknumber<=deck.count - 3{
-                decknumber+=1                // NEW 11/29/2021
-                print("Deck numberX3 = " + String(decknumber))
+                decknumber+=1
+                print("Deck number X3 = " + String(decknumber))
                 print("Number of decks = " + String(deck.count))
                 tappedSymbol1 = Symbol(image: "", name: "")
                 tappedSymbol2 = Symbol(image: "", name: "")
@@ -198,20 +198,19 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 timer.invalidate()
                 counter=maxseconds
                 collectionView.reloadData()
-            }
-            else { //decknumber is 56 (last set of cards)
+            } else{ //decknumber is 56 (last set of cards)
                 print("End of game. We have displayed all the decks (last deck was not won). Launch showGameOver")
                 print("Deck numberX4 = " + String(decknumber))
                 timer.invalidate()
+              
                 Thread.sleep(forTimeInterval: 0.9)
                 showGameOver()
-                collectionView.reloadData()
                 score = 0
                 decknumber=0
                 counter=maxseconds
                 reinitarrays(true)
                 win = true
-                collectionView.reloadData()  // try to play again (after button "play again was pressed")
+                collectionView.reloadData() // restarts the timer, try to play again (after button "play again was pressed")
             }
         }
     }
@@ -221,6 +220,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let gameoverView = storyboard.instantiateViewController(withIdentifier: "modal1") as! GameOverViewController
         gameoverView.score = score
+        clear_all_highlighted_cells_section()
         self.navigationController?.pushViewController(gameoverView, animated: false)
     }
     
@@ -254,7 +254,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         if (myCellIndex.section == 0){
             pressedcard1[myCellIndex.row] = !pressedcard1[myCellIndex.row]
             tappedSymbol1=Symbol(image:res[1],name:res[2])
-            print("section 0: ")
+            print("section 0 ; ")
             print(tappedSymbol1)
             print("\n")
             
@@ -264,10 +264,10 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 3.0
                 cell.layer.borderColor = UIColor.red.cgColor
-                pressedcard1[previouscell1.row] = false   //NEW
             } else if (myCellIndex == self.previouscell1 && !pressedcard1[myCellIndex.row]){  // case where we tap on the same symbol several times and previously it was highlighted (red square). After tapping, it get unhighlighted.   Each symbol of card 1, has its state stored in the boolean array pressedcard1
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 0.0
+                tappedSymbol1 = Symbol(image: "", name: "")
             }
             else if (myCellIndex == self.previouscell1 && pressedcard1[myCellIndex.row]){ // case where we tap on the same symbol 2 several times, and previously it was not highlighted. After tapping, it gets highlighted
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
@@ -279,7 +279,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         else if (myCellIndex.section == 1){ // the principle is the same as for card 1 (here for card 2)
             pressedcard2[myCellIndex.row] = !pressedcard2[myCellIndex.row]   //NEW
             tappedSymbol2=Symbol(image: res[1], name: res[2])
-            print ("section 1: ")
+            print ("section 1 ; ")
             print(tappedSymbol2)
             print("\n")
             
@@ -289,10 +289,10 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 3.0
                 cell.layer.borderColor = UIColor.red.cgColor
-                pressedcard2[previouscell2.row] = false   //NEW
             } else if (myCellIndex == self.previouscell2 && !pressedcard2[myCellIndex.row]){
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 0.0
+                tappedSymbol2 = Symbol(image: "", name: "")
             } else if (myCellIndex == self.previouscell2 && pressedcard2[myCellIndex.row]) {
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 3.0
@@ -301,7 +301,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             self.previouscell2 = myCellIndex
         }
         
-        if (tappedSymbol1.name == tappedSymbol2.name){
+        if (tappedSymbol1.name == tappedSymbol2.name && !tappedSymbol1.name.isEmpty && !tappedSymbol2.name.isEmpty){
             if (myCellIndex.section == 1){
                 let cell1 = collectionView.cellForItem(at: previouscell1) as! CardCollectionViewCell
                 cell1.layer.borderWidth = 3.0
@@ -321,8 +321,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             }
             
             if (decknumber <= deck.count - 3){
-                decknumber+=1        // NEW 11/29/2021
-                print("Deck numberX1 = " + String(decknumber))
+                decknumber+=1
+                print("Deck number X1 = " + String(decknumber))
                 print("Number of decks = " + String(deck.count))
                 score += 3
                 playCorrectAnswerAudio()
@@ -352,7 +352,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         player2.play()
     }
 
-    func reinitarrays(_ gamefinished: Bool? = nil){ // function to reinitialize the state of the tapped symbols (1 is for card1.  2 is for card 2)
+    func reinitarrays(_ gamefinished: Bool? = nil){ // reinitializes the state of the tapped symbols (1 is for card1.  2 is for card 2)
         pressedcard1 = [false,false,false,false,false,false,false,false]
         pressedcard2 = [false,false,false,false,false,false,false,false]
         
@@ -364,7 +364,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         counter=maxseconds + 1
         
         if (gamefinished != nil && gamefinished!){
-            decknumber=1
+            decknumber=0
             print("debug 1")
         }
     }
