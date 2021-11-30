@@ -8,12 +8,14 @@
 import UIKit
 
 class GameOverViewController: UIViewController {
-    @IBOutlet weak var gameOverLabel: UILabel!
+ //   @IBOutlet weak var gameOverLabel: UILabel!
     @IBOutlet weak var playAgain: UIButton!
     @IBOutlet weak var backToMainMenu: UIButton!
     @IBOutlet weak var finalScore: UILabel!
     @IBOutlet weak var playAgainIcon: UIImageView!
     @IBOutlet weak var backToMainMenuIcon: UIImageView!
+    @IBOutlet weak var finalScoreIcon: UIImageView!
+    @IBOutlet weak var gameOver: UIImageView!
     var score: Int = 0
     
     override func viewDidLoad() {
@@ -27,18 +29,23 @@ class GameOverViewController: UIViewController {
         backgroundImageView.alpha = 0.5
         self.view.insertSubview(backgroundImageView, at: 0)
         
-        gameOverLabel.center.x = self.view.center.x
+        gameOver.center.x = self.view.center.x
         
         finalScore.center.x=self.view.center.x
+        finalScore.font=UIFont(name: "DIN Alternate", size: 36)
         finalScore.text = "Your Score: \(score)"
         finalScore.textColor=UIColor.red
-        finalScore.font=UIFont(name: "Arial", size: 36)
         
         playAgain.center.x=self.view.center.x
-        playAgainIcon.center.x = self.view.center.x
-        backToMainMenu.center.x=self.view.center.x
-        backToMainMenuIcon.center.x = self.view.center.x
+        playAgain.titleLabel?.font = UIFont(name: "DIN Alternate", size: 20)
 
+        playAgainIcon.center.x = self.view.center.x
+        
+        backToMainMenu.center.x=self.view.center.x
+        backToMainMenu.titleLabel?.font = UIFont(name: "DIN Alternate", size: 20)
+        
+        backToMainMenuIcon.center.x = self.view.center.x
+        finalScoreIcon.center.x = self.view.center.x
     }
     
     @IBAction func pressToPlayAgain(_ sender: Any) {

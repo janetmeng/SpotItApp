@@ -29,7 +29,11 @@ class StartGameViewViewController: UIViewController {
         self.view.insertSubview(backgroundImageView, at: 0)
         
         startGameButton.center.x=self.view.center.x
+        startGameButton.titleLabel?.font = UIFont(name: "DIN Alternate", size: 20)
+        
         howToPlayButton.center.x=self.view.center.x
+        howToPlayButton.titleLabel?.font = UIFont(name: "DIN Alternate", size: 20)
+        
         gameLogo.center.x = self.view.center.x
         startGameIcon.center.x=self.view.center.x
         howToPlayIcon.center.x=self.view.center.x
