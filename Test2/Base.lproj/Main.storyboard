@@ -213,9 +213,9 @@ Each card in Search the Sea features eight different symbols.
 
 There is only 1 matching symbol between every pair of cards, and the goal of the game is to find the matching symbol before the clock runs out. 
 
-For every match the player correctly points out, the player gets 8 points.
+For every match the player correctly points out, the player gets 1 point.
 
-For every match the player fails to point out under the time limit, 8 points are deducted. 
+For every match the player fails to point out under the time limit, 1 point is deducted. 
 
 You may quit the game at any time; however, note that your progress will not be saved. 
 
@@ -252,17 +252,6 @@ Good luck and have fun playing Search the Sea!</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDl-4x-pFg">
-                                <rect key="frame" x="0.0" y="480" width="414" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Back to Main Menu">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressToReturnToMainMenu:" destination="Kdp-Di-n3d" eventType="touchDown" id="i9D-Ha-xzj"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="TIR-DO-BJO">
                                 <rect key="frame" x="103" y="364" width="209" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -278,10 +267,6 @@ Good luck and have fun playing Search the Sea!</string>
                                     <action selector="pressToPlayAgain:" destination="Kdp-Di-n3d" eventType="touchDown" id="dZc-v4-djs"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-1L-13f">
-                                <rect key="frame" x="64" y="457" width="293" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-ZP-Fbm">
                                 <rect key="frame" x="146" y="137" width="122" height="97"/>
                                 <constraints>
@@ -305,6 +290,21 @@ Good luck and have fun playing Search the Sea!</string>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-1L-13f">
+                                <rect key="frame" x="58" y="451" width="305" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJV-lT-fLH">
+                                <rect key="frame" x="1" y="480" width="414" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Back to Main Menu">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressToReturnToMainMenu:" destination="Kdp-Di-n3d" eventType="touchDown" id="98Z-DU-f4d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kdO-kF-fET"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -318,7 +318,7 @@ Good luck and have fun playing Search the Sea!</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backToMainMenu" destination="xDl-4x-pFg" id="xvn-qG-wij"/>
+                        <outlet property="backToMainMenu" destination="mJV-lT-fLH" id="joR-eA-HRG"/>
                         <outlet property="backToMainMenuIcon" destination="BrQ-1L-13f" id="HoV-JN-3GF"/>
                         <outlet property="finalScore" destination="Bt6-xV-v6B" id="QhZ-66-CNh"/>
                         <outlet property="finalScoreIcon" destination="9E3-4p-oAu" id="KQd-ic-LK8"/>

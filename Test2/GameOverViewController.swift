@@ -8,7 +8,6 @@
 import UIKit
 
 class GameOverViewController: UIViewController {
- //   @IBOutlet weak var gameOverLabel: UILabel!
     @IBOutlet weak var playAgain: UIButton!
     @IBOutlet weak var backToMainMenu: UIButton!
     @IBOutlet weak var finalScore: UILabel!
