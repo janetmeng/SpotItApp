@@ -33,7 +33,7 @@ class GameOverViewController: UIViewController {
         finalScore.center.x=self.view.center.x
         finalScore.font=UIFont(name: "DIN Alternate", size: 36)
         finalScore.text = "Your Score: \(score)"
-        finalScore.textColor=UIColor.red
+        finalScore.textColor=UIColor.blue
         
         playAgain.center.x=self.view.center.x
         playAgain.titleLabel?.font = UIFont(name: "DIN Alternate", size: 20)
