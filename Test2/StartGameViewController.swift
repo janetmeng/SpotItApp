@@ -25,7 +25,7 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
     @IBOutlet weak var howToPlayIcon: UIImageView!
     @IBOutlet weak var picker: UIPickerView!
     var pickerData:[String] = [String]()
-    var numberRounds: Int = 4    // need to be initialized to one real value (let us choose 13), for the case where the user does not move the UIPickerView (it will be 13 rounds)
+    var numberRounds: Int = 13    // need to be initialized to one real value (let us choose 13), for the case where the user does not move the UIPickerView (it will be 13 rounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()

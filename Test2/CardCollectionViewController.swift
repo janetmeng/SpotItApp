@@ -151,12 +151,12 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         if (indexPath.section == 0){ //master card (card at top of phone screen)
             let indexIntoNestedArray1 = deck[decknumber][indexPath.row]
             let theSymbol1 = symbols[indexIntoNestedArray1-1]
-            cell.symbolImageView.image = UIImage(named: theSymbol1.name)?.rotated2(degrees: Double.random(in: -90..<91))
+            cell.symbolImageView.image = UIImage(named: theSymbol1.name)?.rotated2(degrees: Double.random(in: -180..<181))
         }
         else if (indexPath.section == 1 && (decknumber <= deck.count - 2)){ //player's card (card at bottom of phone screen)
             let indexIntoNestedArray2 = deck[decknumber+1][indexPath.row]
             let theSymbol2 = symbols[indexIntoNestedArray2-1]
-            cell.symbolImageView.image = UIImage(named: theSymbol2.name)?.rotated2(degrees: Double.random(in: -90..<91))
+            cell.symbolImageView.image = UIImage(named: theSymbol2.name)?.rotated2(degrees: Double.random(in: -180..<181))
         }
         //Configure the cell
         return cell
@@ -186,11 +186,10 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
            
             if decknumber<=deck.count - 3{
                 decknumber += 1
-                print("Deck numberX3 = " + String(decknumber))
                 print("Number of decks = " + String(deck.count))
                 tappedSymbol1 = Symbol(image: "", name: "")
                 tappedSymbol2 = Symbol(image: "", name: "")
-                score -= 4
+                score -= 1
                 if (score<0)
                 { score=0 }
                 clear_all_highlighted_cells_section()   // clear all selections
@@ -198,7 +197,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 counter=maxseconds
                 collectionView.reloadData()
             } else { //round is 56 (final round)
-                print("Deck numberX4 = " + String(decknumber))
                 print("End of game. We have displayed all the decks (last deck was not won). Launch showGameOver")
                 timer.invalidate()
                 Thread.sleep(forTimeInterval: 0.75)
@@ -243,12 +241,11 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
      }
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool{
-        if counter > 0
-        {   findPairs(indexPath)
+        if counter > 0{
+            findPairs(indexPath)
             return true
-        }
-        else
-        {    return false
+        } else {
+            return false
         }
     }
     
@@ -267,7 +264,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             if (myCellIndex != previouscell1){ // case where the previous symbol is not the same as the new tapped symbol
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 3.0
-                cell.layer.borderColor = UIColor.red.cgColor
+                let teal = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
+                cell.layer.borderColor = teal.cgColor
             } else if (myCellIndex == self.previouscell1 && !pressedcard1[myCellIndex.row]){  // case where we tap on the same symbol several times and previously it was highlighted (red square). After tapping, it get unhighlighted.   Each symbol of card 1, has its state stored in the boolean array pressedcard1
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 0.0
@@ -276,7 +274,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             else if (myCellIndex == self.previouscell1 && pressedcard1[myCellIndex.row]){ // case where we tap on the same symbol 2 several times, and previously it was not highlighted. After tapping, it gets highlighted
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 3.0
-                cell.layer.borderColor = UIColor.red.cgColor
+                let teal = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
+                cell.layer.borderColor = teal.cgColor
             }
             self.previouscell1 = myCellIndex
         }
@@ -292,7 +291,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             if (myCellIndex != previouscell2){
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 3.0
-                cell.layer.borderColor = UIColor.red.cgColor
+                let teal = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
+                cell.layer.borderColor = teal.cgColor
             } else if (myCellIndex == self.previouscell2 && !pressedcard2[myCellIndex.row]){
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 0.0
@@ -300,7 +300,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             } else if (myCellIndex == self.previouscell2 && pressedcard2[myCellIndex.row]) {
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 3.0
-                cell.layer.borderColor = UIColor.red.cgColor
+                let teal = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
+                cell.layer.borderColor = teal.cgColor
             }
             self.previouscell2 = myCellIndex
         }
@@ -326,17 +327,15 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             
             if (decknumber <= deck.count - 3){
                 decknumber+=1
-                print("Deck number X1 = " + String(decknumber))
                 print("Number of decks = " + String(deck.count))
-                score += 3
+                score += 1
                 playCorrectAnswerAudio()
                 
                 reinitarrays()
                 win = true
             } else{
-                print("Deck numberX2 = " + String(decknumber))
                 print("End of game, we have displayed all the decks and last deck was WON. Launch showGameOver")
-                score += 3
+                score += 1
                 playCorrectAnswerAudio()
                 win = true
                 gameover = true
@@ -369,7 +368,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         
         if (gamefinished != nil && gamefinished!){
             decknumber=0
-           // print("debug 1")
         }
     }
     
