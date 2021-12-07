@@ -212,9 +212,9 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dx-XO-MRW">
                                         <rect key="frame" x="45" y="0.0" width="324" height="591"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Search the Sea is a pattern recognition game in which players try to find an image shown on two cards.
+                                        <mutableString key="text">Search the Sea is a pattern recognition game in which players try to find an image shown on two cards.
 
-Each card in Search the Sea features eight different symbols.
+There are 57 total cards in Search the Sea, but you can choose to play with 14, 28, 42, or 57 cards when you begin the game. Each card features eight different symbols.
 
 There is only 1 matching symbol between every pair of cards, and the goal of the game is to find the matching symbol before the clock runs out. 
 
@@ -224,7 +224,7 @@ For every match the player fails to point out under the time limit, 1 point is d
 
 You may quit the game at any time; however, note that your progress will not be saved. 
 
-Good luck and have fun playing Search the Sea!</string>
+Good luck and have fun playing Search the Sea!</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -257,17 +257,6 @@ Good luck and have fun playing Search the Sea!</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDl-4x-pFg">
-                                <rect key="frame" x="0.0" y="480" width="414" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Back to Main Menu">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="pressToReturnToMainMenu:" destination="Kdp-Di-n3d" eventType="touchDown" id="i9D-Ha-xzj"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="TIR-DO-BJO">
                                 <rect key="frame" x="103" y="364" width="209" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -283,10 +272,6 @@ Good luck and have fun playing Search the Sea!</string>
                                     <action selector="pressToPlayAgain:" destination="Kdp-Di-n3d" eventType="touchDown" id="dZc-v4-djs"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-1L-13f">
-                                <rect key="frame" x="64" y="457" width="293" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-ZP-Fbm">
                                 <rect key="frame" x="146" y="137" width="122" height="97"/>
                                 <constraints>
@@ -310,6 +295,21 @@ Good luck and have fun playing Search the Sea!</string>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-1L-13f">
+                                <rect key="frame" x="50" y="452" width="320" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwX-LP-pjD">
+                                <rect key="frame" x="0.0" y="480" width="415" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Back to Main Menu">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressToReturnToMainMenu:" destination="Kdp-Di-n3d" eventType="touchUpInside" id="xBd-NQ-0n8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kdO-kF-fET"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -323,7 +323,7 @@ Good luck and have fun playing Search the Sea!</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backToMainMenu" destination="xDl-4x-pFg" id="xvn-qG-wij"/>
+                        <outlet property="backToMainMenu" destination="TwX-LP-pjD" id="06Q-E9-GHg"/>
                         <outlet property="backToMainMenuIcon" destination="BrQ-1L-13f" id="HoV-JN-3GF"/>
                         <outlet property="finalScore" destination="Bt6-xV-v6B" id="QhZ-66-CNh"/>
                         <outlet property="finalScoreIcon" destination="9E3-4p-oAu" id="KQd-ic-LK8"/>

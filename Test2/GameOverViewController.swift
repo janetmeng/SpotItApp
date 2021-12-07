@@ -56,7 +56,7 @@ class GameOverViewController: UIViewController {
         print("stop playing & return to main menu, the button was pressed")
         navigationController?.popToRootViewController(animated: true)
     }
-    
+   
     /*
     // MARK: - Navigation
 

@@ -25,7 +25,7 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
     @IBOutlet weak var howToPlayIcon: UIImageView!
     @IBOutlet weak var picker: UIPickerView!
     var pickerData:[String] = [String]()
-    var numberRounds: Int = 13    // need to be initialized to one real value (let us choose 13), for the case where the user does not move the UIPickerView (it will be 13 rounds)
+    var numberRounds: Int = 13    // need to be initialized to one real value in case the user does not move the UIPickerView (it will be 13 rounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,7 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         let numberOfCards  = Int(pickerData[row].split(separator: " ")[0]) ??  14     // from "14 cards" -> "14" (String)  -> 14 (Integer).  if we can not split the string and get an integer value, then we set the value to 14 : ?? 14
-            numberRounds  =  numberOfCards - 1   // we substract 1, to get the number of round
+            numberRounds =  numberOfCards - 1   // we substract 1, to get the number of round
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -77,17 +77,15 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
      
         var pickerLabel: UILabel? = (view as? UILabel)    // https://stackoverflow.com/questions/44223862/how-do-i-change-the-font-size-in-a-uipickerview-in-swift
-            if pickerLabel == nil
-            {   pickerLabel = UILabel()
+            if pickerLabel == nil{
+                pickerLabel = UILabel()
                 pickerLabel?.font = UIFont(name: "DIN Alternate", size: 24)
                 pickerLabel?.textAlignment = .center
             }
         pickerLabel?.text = pickerData[row]
-        //pickerLabel?.textColor = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
-        pickerLabel?.textColor = UIColor.white
+        pickerLabel?.textColor = UIColor(red: 0/255, green: 105/255, blue: 150/255, alpha: 1) // dark ocean blue
         
-
-            return pickerLabel!
+        return pickerLabel!
     }
     
     @IBAction func showInstructions(_ sender: Any) {
