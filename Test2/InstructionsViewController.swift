@@ -8,7 +8,7 @@
 import UIKit
 
 class InstructionsViewController: UIViewController {
-    @IBOutlet weak var startGame: UIButton!
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var instructionsTitle: UILabel!
     @IBOutlet weak var instructionsDescriptionn: UILabel!
     @IBOutlet weak var scrollViewforInstructions: UIScrollView!
@@ -16,14 +16,25 @@ class InstructionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backgroundImage = UIImage.init(named: "background-instructions")
+        let backgroundImageView = UIImageView.init(frame: self.view.frame)
+        backgroundImageView.image = backgroundImage
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.alpha = 0.7
+        self.view.insertSubview(backgroundImageView, at: 0)
+        
         scrollViewforInstructions.contentSize=CGSize(width: scrollViewforInstructions.frame.width * 1, height: scrollViewforInstructions.frame.height * 1.5)
         print("scrollViewForInstructions= \(scrollViewforInstructions.frame.width)") // to debug
         print("scrollViewForInstructions= \(scrollViewforInstructions.frame.height * 1.5)") // to debug
         scrollViewforInstructions.center.x = self.view.center.x
+        instructionsTitle.textColor=UIColor(red: 0/255, green: 105/255, blue: 150/255, alpha: 1)
+        instructionsTitle.font=UIFont(name: "DIN Alternate", size: 40)
         instructionsTitle.center.x = self.view.center.x
-        startGame.center.x = self.view.center.x
         
-        //need this or not?
+        instructionsDescriptionn.font=UIFont(name: "DIN Alternate", size: 20)
+        instructionsDescriptionn.textColor=UIColor(red: 0/255, green: 105/255, blue: 150/255, alpha: 1)
+    
+        
         let backBarButtton = UIBarButtonItem(title: "Back to Main Menu", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButtton
     }
@@ -42,7 +53,6 @@ class InstructionsViewController: UIViewController {
         navigationItem.backBarButtonItem = backBarButtton
         self.navigationController?.pushViewController(vc, animated: true)
     }
-  
     
     @IBAction func pressToReturnToMainMenu(_ sender: Any) {
         print("stop playing & return to main menu, the button was pressed")

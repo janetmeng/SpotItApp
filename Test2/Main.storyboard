@@ -190,21 +190,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions for Search the Sea" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHa-MO-ruW">
-                                <rect key="frame" x="20" y="95" width="374" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VY4-9L-Ccs">
-                                <rect key="frame" x="137" y="197" width="141" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start Game"/>
-                                <connections>
-                                    <action selector="pressToStartGame:" destination="4t8-XI-CpU" eventType="touchDown" id="1ZM-u3-LlW"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Dw-DS-vKl">
                                 <rect key="frame" x="0.0" y="250" width="414" height="599"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -212,7 +197,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dx-XO-MRW">
                                         <rect key="frame" x="45" y="0.0" width="324" height="591"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <mutableString key="text">Search the Sea is a pattern recognition game in which players try to find an image shown on two cards.
+                                        <string key="text">Search the Sea is a pattern recognition game in which players try to find an image shown on two cards.
 
 There are 57 total cards in Search the Sea, but you can choose to play with 14, 28, 42, or 57 cards when you begin the game. Each card features eight different symbols.
 
@@ -224,7 +209,7 @@ For every match the player fails to point out under the time limit, 1 point is d
 
 You may quit the game at any time; however, note that your progress will not be saved. 
 
-Good luck and have fun playing Search the Sea!</mutableString>
+Good luck and have fun playing Search the Sea!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -233,6 +218,13 @@ Good luck and have fun playing Search the Sea!</mutableString>
                                 <viewLayoutGuide key="contentLayoutGuide" id="oqX-C0-dVa"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="D96-5d-NEE"/>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions for Search the Sea" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHa-MO-ruW">
+                                <rect key="frame" x="20" y="125" width="374" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g9U-cy-VfD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -242,7 +234,6 @@ Good luck and have fun playing Search the Sea!</mutableString>
                         <outlet property="instructionsDescriptionn" destination="4Dx-XO-MRW" id="YW4-6Q-3Nv"/>
                         <outlet property="instructionsTitle" destination="oHa-MO-ruW" id="fDt-cp-9DB"/>
                         <outlet property="scrollViewforInstructions" destination="4Dw-DS-vKl" id="aDE-h7-jH0"/>
-                        <outlet property="startGame" destination="VY4-9L-Ccs" id="Uwa-tg-738"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hOh-rB-F36" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
