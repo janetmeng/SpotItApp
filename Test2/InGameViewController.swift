@@ -18,7 +18,6 @@ class InGameViewController: UINavigationController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-
     /*
     // MARK: - Navigation
 

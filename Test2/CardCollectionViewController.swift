@@ -68,17 +68,17 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private var tappedSymbol1 = Symbol(image: "", name: "")
     private var tappedSymbol2 = Symbol(image: "", name: "")
-    private var decknumber: Int = 0    // decknumber starts at 0. incremented at each win
+    private var decknumber: Int = 0 //decknumber starts at 0. incremented at each win
     private var timer: Timer  = Timer()
-    public  let maxseconds: Int = 8  // seconds
-    private var counter: Int = 8  // seconds
+    public  let maxseconds: Int = 8 //seconds
+    private var counter: Int = 8 //seconds
     private var mysectionheader: CardCollectionReusableView = CardCollectionReusableView()
     private var score: Int = 0
     
-    private var pressedcard1: [Bool]=[false,false,false,false,false,false,false,false]  //no cell was pressed on card 1 at beginning. This boolean serves to keep track of the currently selected symbol on card 1 (selected-> true.  not selected-> false)
-    private var pressedcard2: [Bool]=[false,false,false,false,false,false,false,false]  //no cell was pressed on card 2 at beginning
-    private var previouscell1: IndexPath = IndexPath(row: 0, section: 2)  // previous cell pressed in card 1 (we keep record)
-    private var previouscell2: IndexPath = IndexPath(row: 0, section: 2)  //same as above for card 2
+    private var pressedcard1: [Bool]=[false,false,false,false,false,false,false,false] //no cell was pressed on card 1 at beginning. This boolean serves to keep track of the currently selected symbol on card 1 (selected-> true.  not selected-> false)
+    private var pressedcard2: [Bool]=[false,false,false,false,false,false,false,false] //no cell was pressed on card 2 at beginning
+    private var previouscell1: IndexPath = IndexPath(row: 0, section: 2) // previous cell pressed in card 1 (we keep record)
+    private var previouscell2: IndexPath = IndexPath(row: 0, section: 2) //same as above for card 2
     
     private let url1 = Bundle.main.url(forResource: "correctt", withExtension: "mp3")
     private let url2 = Bundle.main.url(forResource: "incorrect", withExtension: "mp3")
@@ -163,14 +163,14 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     // called every time interval from the timer
-    @objc func timerAction()
-    {   if (win || gameover)
-        {   Thread.sleep(forTimeInterval: 0.35)
+    @objc func timerAction(){
+        if (win || gameover){
+            Thread.sleep(forTimeInterval: 0.35)
             clear_all_highlighted_cells_section()
             timer.invalidate()
             collectionView.reloadData()
             win = false
-        gameover = false
+            gameover = false
         } // will run cellForItemAt method to redraw the 2 cards
         
         counter -= 1
@@ -183,16 +183,17 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             playIncorrectAnswerAudio()
         } else if (counter<0) {
             Thread.sleep(forTimeInterval: 0.5)
-           
+
             if decknumber<=deck.count - 3{
                 decknumber += 1
                 print("Number of decks = " + String(deck.count))
                 tappedSymbol1 = Symbol(image: "", name: "")
                 tappedSymbol2 = Symbol(image: "", name: "")
                 score -= 1
-                if (score<0)
-                { score=0 }
-                clear_all_highlighted_cells_section()   // clear all selections
+                if (score<0){
+                    score=0
+                }
+                clear_all_highlighted_cells_section() //clear all selections
                 timer.invalidate()
                 counter=maxseconds
                 collectionView.reloadData()
@@ -200,17 +201,16 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 print("End of game. We have displayed all the decks (last deck was not won). Launch showGameOver")
                 timer.invalidate()
                 Thread.sleep(forTimeInterval: 0.75)
-                showGameOver()  // IMPORTANT. the code will continue in parallel, even as GameOverViewController is displayed (can not do anything about it)
+                showGameOver() //IMPORTANT. the code will continue in parallel, even as GameOverViewController is displayed (can not do anything about it)
                 score = 0
                 reinitarrays(true)
                 gameover = true
                 win = false
-                collectionView.reloadData()    // that will restart the timer, try to play again (after button "play again was pressed")
+                collectionView.reloadData() //restarts the timer, tries to play again (after button "play again" was pressed)
             }
         }
     }
     
-   
     @IBAction func showGameOver(){
         deck.shuffle()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -255,18 +255,18 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         if (myCellIndex.section == 0){
             pressedcard1[myCellIndex.row] = !pressedcard1[myCellIndex.row]
             tappedSymbol1=Symbol(image:res[1],name:res[2])
-            print("section 0 ; ")
+            print("section 0: ")
             print(tappedSymbol1)
             print("\n")
             
-            clear_all_highlighted_cells_section(0)   // clear all selections in card 1 (the card on the top)
+            clear_all_highlighted_cells_section(0) //clear all selections in card 1 (the card on the top)
             
-            if (myCellIndex != previouscell1){ // case where the previous symbol is not the same as the new tapped symbol
+            if (myCellIndex != previouscell1){ //case where the previous symbol is not the same as the new tapped symbol
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 3.0
                 let teal = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
                 cell.layer.borderColor = teal.cgColor
-            } else if (myCellIndex == self.previouscell1 && !pressedcard1[myCellIndex.row]){  // case where we tap on the same symbol several times and previously it was highlighted (red square). After tapping, it get unhighlighted.   Each symbol of card 1, has its state stored in the boolean array pressedcard1
+            } else if (myCellIndex == self.previouscell1 && !pressedcard1[myCellIndex.row]){ //the case where the player taps on the same symbol several times and previously it was highlighted (blue square). After tapping, it get unhighlighted. Each symbol of card 1, has its state stored in the boolean array pressedcard1
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
                 cell.layer.borderWidth = 0.0
                 tappedSymbol1 = Symbol(image: "", name: "")
@@ -282,7 +282,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         else if (myCellIndex.section == 1){ // the principle is the same as for card 1 (here for card 2)
             pressedcard2[myCellIndex.row] = !pressedcard2[myCellIndex.row]   //NEW
             tappedSymbol2=Symbol(image: res[1], name: res[2])
-            print ("section 1 ; ")
+            print ("section 1: ")
             print(tappedSymbol2)
             print("\n")
             
@@ -367,7 +367,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         counter=maxseconds + 1
         
         if (gamefinished != nil && gamefinished!){
-            decknumber=0
+            decknumber = 0
         }
     }
     
@@ -394,7 +394,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
-      //  print("HEADER: " + String(indexPath.section) + " : " + String(indexPath.row))
         if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? CardCollectionReusableView{
         
             if (indexPath.section == 0){
@@ -424,7 +423,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                     
                 mysectionheader = sectionHeader
                 // start the timer
-                if (decknumber <= deck.count - 2){  // we run the asynchrononous timer until the last deck. IMPORTANT!!
+                if (decknumber <= deck.count - 2){ //we run the asynchrononous timer until the last deck. IMPORTANT!
                   timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
                 }
             } else if (indexPath.section == 1) {
@@ -538,6 +537,7 @@ extension UIImage {    //  https://stackoverflow.com/questions/27092354/rotating
 
     }
     */
+
 /*
 extension MutableCollection {
     /// Shuffles the contents of this collection.
