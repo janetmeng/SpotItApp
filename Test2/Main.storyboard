@@ -56,10 +56,12 @@
                                 <rect key="frame" x="49" y="207" width="338" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d5Y-tD-NHM">
-                                <rect key="frame" x="0.0" y="525" width="414" height="250"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Number of Cards" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E5y-oQ-yaw">
+                                <rect key="frame" x="84" y="633" width="247" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zrh-T9-0VF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -75,10 +77,10 @@
                     <navigationItem key="navigationItem" id="TWq-qt-Z3T"/>
                     <connections>
                         <outlet property="backgroundImage" destination="qtT-uq-Ifd" id="ykl-kR-Gpj"/>
+                        <outlet property="fieldCardNumber" destination="E5y-oQ-yaw" id="aVH-7D-4Nf"/>
                         <outlet property="gameLogo" destination="VF7-dW-W11" id="ae7-8a-sGD"/>
                         <outlet property="howToPlayButton" destination="ekW-nm-v0x" id="CTL-LW-Vg4"/>
                         <outlet property="howToPlayIcon" destination="LLY-f1-BEB" id="kYr-ou-Ynn"/>
-                        <outlet property="picker" destination="d5Y-tD-NHM" id="MV7-MH-2L0"/>
                         <outlet property="startGameButton" destination="GFL-xA-Efz" id="W6F-TD-WUa"/>
                         <outlet property="startGameIcon" destination="czW-8B-mhv" id="PuD-h5-yNb"/>
                     </connections>

@@ -49,12 +49,12 @@ class GameOverViewController: UIViewController {
     
     @IBAction func pressToPlayAgain(_ sender: Any) {
         print("Play again, the button was pressed")
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false) // previously it was true
     }
     
     @IBAction func pressToReturnToMainMenu(_ sender: Any) {
         print("Return to main menu, the button was pressed")
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popToRootViewController(animated: false)
     }
    
     /*

@@ -7,7 +7,23 @@
 
 import UIKit
 
-class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
+class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate {
+       
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var howToPlayButton: UIButton!
+    @IBOutlet weak var gameLogo: UIImageView!
+    
+    @IBOutlet weak var startGameIcon: UIImageView!
+    @IBOutlet weak var howToPlayIcon: UIImageView!
+    
+    @IBOutlet weak var fieldCardNumber: UITextField!
+    
+    
+    let pickerView = UIPickerView()
+    var pickerData:[String] = [String]()
+    var numberRounds: Int = 13 //needs to be initialized to one real value (13), for the case where the user does not move the UIPickerView
+   
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -16,24 +32,11 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
         return pickerData.count
     }
     
-    @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var startGameButton: UIButton!
-    @IBOutlet weak var howToPlayButton: UIButton!
-    @IBOutlet weak var gameLogo: UIImageView!
-    
-    @IBOutlet weak var startGameIcon: UIImageView!
-    @IBOutlet weak var howToPlayIcon: UIImageView!
-    @IBOutlet weak var picker: UIPickerView!
-    var pickerData:[String] = [String]()
-    var numberRounds: Int = 13 // initialize to a value in case the user does not move the UIPickerView (13 rounds)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("first controller IN GAME")
-        
-        self.picker.delegate = self
-        self.picker.dataSource = self
-        pickerData=["14 cards (1/4 deck)","28 cards (1/2 deck)","42 cards (3/4 deck)","57 cards (full deck)"]  // contains the number of cards: 13, 28, 42 or 57
+        createPickerView()
+        dismissPickerView()
         
         //background
         let backgroundImage = UIImage.init(named: "background-1")
@@ -52,6 +55,10 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
         gameLogo.center.x = self.view.center.x
         startGameIcon.center.x=self.view.center.x
         howToPlayIcon.center.x=self.view.center.x
+        
+        fieldCardNumber.center.x = self.view.center.x
+        fieldCardNumber.font=UIFont(name: "DIN Alternate", size: 14)
+        fieldCardNumber.text = "Choose the number of cards"
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,27 +73,52 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
-        let numberOfCards  = Int(pickerData[row].split(separator: " ")[0]) ??  14  // from "14 cards" -> "14" (String) -> 14 (Integer) If we cannot split the string and get an integer value, then we set the value to 14 : ?? 14
-            numberRounds =  numberOfCards - 1 // number of cards - 1 = number of rounds b/c of overlap
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 40
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel: UILabel? = (view as? UILabel)    // https://stackoverflow.com/questions/44223862/how-do-i-change-the-font-size-in-a-uipickerview-in-swift
-        if pickerLabel == nil{
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "DIN Alternate", size: 24)
-            pickerLabel?.textAlignment = .center
-        }
-        pickerLabel?.text = pickerData[row]
-        pickerLabel?.textColor = UIColor(red: 0/255, green: 105/255, blue: 150/255, alpha: 1) //dark ocean blue
+        fieldCardNumber.text = pickerData[row]
+        let numberOfCards  = Int(pickerData[row].split(separator: " ")[0]) ??  14     // from "14 cards" -> "14" (String)  -> 14 (Integer).  if we can not split the string and get an integer value, then we set the value to 14 : ?? 14
+            numberRounds  =  numberOfCards - 1   // we substract 1, to get the number of round
+        print("inside didSelectRow")
         
-        return pickerLabel!
     }
     
+    /*
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+     
+        var pickerLabel: UILabel? = (view as? UILabel)    // https://stackoverflow.com/questions/44223862/how-do-i-change-the-font-size-in-a-uipickerview-in-swift
+            if pickerLabel == nil
+            {   pickerLabel = UILabel()
+                pickerLabel?.font = UIFont(name: "DIN Alternate", size: 24)
+                pickerLabel?.textAlignment = .center
+            }
+        pickerLabel?.text = pickerData[row]
+        //pickerLabel?.textColor = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
+        pickerLabel?.textColor = UIColor.white
+            return pickerLabel!
+    }
+    */
+    
+    func createPickerView() {
+        pickerData=["14 cards (1/4 deck)","28 cards (1/2 deck)","42 cards (3/4 deck)","57 cards (full deck)"] // contains the number of cards: 13, 28, 42 or 57
+       // fieldCardNumber.delegate = self
+        fieldCardNumber.inputView = pickerView
+        pickerView.delegate = self
+    }
+    
+    func dismissPickerView() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let button = UIBarButtonItem(title: "Done", style: .done, target:self,action: #selector(onClose))
+        toolBar.setItems([button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        fieldCardNumber.inputAccessoryView = toolBar
+       // textFiled.resignFirstResponder()
+    }
+    
+    @objc func onClose(sender: UIBarButtonItem) {
+        print("inside obj func: " + String(numberRounds))
+        view.endEditing(true)
+    }
+
     @IBAction func showInstructions(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainGameView = storyboard.instantiateViewController(withIdentifier: "instructionsvc")
@@ -98,6 +130,7 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
     }
 
     @IBAction func startTheGame(_ sender: Any) {
+        // fieldCardNumber.endEditing(true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainGameView = storyboard.instantiateViewController(withIdentifier: "StartGameViewId") as! CardCollectionViewController    // force mainGameView to be instanciated as a CardCollectionViewController object
        
