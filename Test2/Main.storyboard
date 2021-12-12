@@ -17,22 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qtT-uq-Ifd">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qtT-uq-Ifd">
                                 <rect key="frame" x="133" y="88" width="148" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Vmt-fI-H0U"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="czW-8B-mhv">
-                                <rect key="frame" x="84" y="359" width="247" height="63"/>
+                                <rect key="frame" x="84" y="296" width="247" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonFinal" translatesAutoresizingMaskIntoConstraints="NO" id="LLY-f1-BEB">
-                                <rect key="frame" x="84" y="461" width="247" height="63"/>
+                                <rect key="frame" x="84" y="402" width="247" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFL-xA-Efz">
-                                <rect key="frame" x="0.0" y="374" width="414" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFL-xA-Efz">
+                                <rect key="frame" x="133" y="311" width="148" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Start Game">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,7 +41,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekW-nm-v0x">
-                                <rect key="frame" x="0.0" y="475" width="414" height="34"/>
+                                <rect key="frame" x="133" y="417" width="148" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="How to Play">
@@ -52,27 +51,19 @@
                                     <action selector="showInstructions:" destination="4ed-AR-sEw" eventType="touchDown" id="aAq-Qs-e7T"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="VF7-dW-W11">
-                                <rect key="frame" x="49" y="207" width="338" height="131"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Number of Cards" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E5y-oQ-yaw">
-                                <rect key="frame" x="84" y="633" width="247" height="34"/>
+                                <rect key="frame" x="84" y="509" width="247" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="VF7-dW-W11">
+                                <rect key="frame" x="38" y="157" width="338" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zrh-T9-0VF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="qtT-uq-Ifd" firstAttribute="leading" secondItem="Zrh-T9-0VF" secondAttribute="leading" constant="133" id="4H9-F5-Kum"/>
-                            <constraint firstItem="GFL-xA-Efz" firstAttribute="centerX" secondItem="qtT-uq-Ifd" secondAttribute="centerX" id="Uxh-vO-3LW"/>
-                            <constraint firstItem="GFL-xA-Efz" firstAttribute="leading" secondItem="Zrh-T9-0VF" secondAttribute="leading" id="ae5-1b-ioj"/>
-                            <constraint firstItem="GFL-xA-Efz" firstAttribute="centerX" secondItem="2Pr-wU-NFq" secondAttribute="centerX" id="edm-Kk-r8W"/>
-                            <constraint firstItem="GFL-xA-Efz" firstAttribute="top" secondItem="2Pr-wU-NFq" secondAttribute="top" constant="374" id="he8-jY-hOr"/>
-                            <constraint firstItem="qtT-uq-Ifd" firstAttribute="top" secondItem="Zrh-T9-0VF" secondAttribute="top" id="xa2-Pi-MrX"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TWq-qt-Z3T"/>
                     <connections>
@@ -197,17 +188,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dx-XO-MRW">
-                                        <rect key="frame" x="45" y="0.0" width="324" height="591"/>
+                                        <rect key="frame" x="46" y="0.0" width="322" height="525"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Search the Sea is a pattern recognition game in which players try to find an image shown on two cards.
+                                        <string key="text">Search the Sea is a pattern recognition game.
 
-There are 57 total cards in Search the Sea, but you can choose to play with 14, 28, 42, or 57 cards when you begin the game. Each card features eight different symbols.
+There are 57 total cards in Search the Sea, but you can choose to play with 7, 14, 28, 42, or 57 cards when you begin the game. 
 
-There is only 1 matching symbol between every pair of cards, and the goal of the game is to find the matching symbol before the clock runs out. 
-
-For every match the player correctly points out, the player gets 1 point.
-
-For every match the player fails to point out under the time limit, 1 point is deducted. 
+The goal of the game is to find the matching symbol before the clock runs out. Note that there is only 1 matching symbol between every pair of cards.
 
 You may quit the game at any time; however, note that your progress will not be saved. 
 
@@ -255,7 +242,7 @@ Good luck and have fun playing Search the Sea!</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmp-Br-bDq">
-                                <rect key="frame" x="0.0" y="381" width="414" height="27"/>
+                                <rect key="frame" x="130" y="381" width="160" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Play Again">
@@ -293,7 +280,7 @@ Good luck and have fun playing Search the Sea!</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwX-LP-pjD">
-                                <rect key="frame" x="0.0" y="480" width="415" height="33"/>
+                                <rect key="frame" x="97" y="480" width="222" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Back to Main Menu">

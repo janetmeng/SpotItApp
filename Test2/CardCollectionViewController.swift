@@ -68,10 +68,10 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private var tappedSymbol1 = Symbol(image: "", name: "")
     private var tappedSymbol2 = Symbol(image: "", name: "")
-    private var decknumber: Int = 0 //decknumber starts at 0. incremented at each win
+    private var decknumber: Int = 0 // decknumber starts at 0. incremented at each win
     private var timer: Timer  = Timer()
-    public  let maxseconds: Int = 8 //seconds
-    private var counter: Int = 8 //seconds
+    public  let maxseconds: Int = 8 // seconds
+    private var counter: Int = 8 // seconds
     private var mysectionheader: CardCollectionReusableView = CardCollectionReusableView()
     private var score: Int = 0
     
@@ -181,32 +181,34 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         } else if (counter == 0) {
             mysectionheader.sectionHeaderTimer.text = String(counter) + " seconds left"
             playIncorrectAnswerAudio()
-        } else if (counter<0) {
+        } else if (counter < 0) {
             Thread.sleep(forTimeInterval: 0.5)
 
-            if decknumber<=deck.count - 3{
+            if (decknumber <= deck.count - 3){
                 decknumber += 1
                 print("Number of decks = " + String(deck.count))
                 tappedSymbol1 = Symbol(image: "", name: "")
                 tappedSymbol2 = Symbol(image: "", name: "")
                 score -= 1
-                if (score<0){
+                if (score < 0){
                     score=0
                 }
                 clear_all_highlighted_cells_section() //clear all selections
                 timer.invalidate()
                 counter=maxseconds
                 collectionView.reloadData()
-            } else { //round is 56 (final round)
+            } else { // round is 56 (final round)
                 print("End of game. We have displayed all the decks (last deck was not won). Launch showGameOver")
+                score -= 1
                 timer.invalidate()
                 Thread.sleep(forTimeInterval: 0.75)
-                showGameOver() //IMPORTANT. the code will continue in parallel, even as GameOverViewController is displayed (can not do anything about it)
-                score = 0
+                showGameOver() // IMPORTANT. the code will continue in parallel, even as GameOverViewController is displayed (cannot do anything about it)
                 reinitarrays(true)
                 gameover = true
                 win = false
-                collectionView.reloadData() //restarts the timer, tries to play again (after button "play again" was pressed)
+                collectionView.reloadData() // restarts the timer, tries to play again (after button "play again" was pressed)
+                score = 0
+
             }
         }
     }
@@ -250,12 +252,12 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func findPairs(_ myCellIndex: IndexPath){
-        let res = get_symbol(x: myCellIndex.section + decknumber , y: myCellIndex.row)   // tapped 1 time on the symbol, the symbol has been selected    // correction on 11/21/2021 as decknumber now starts at 1 and ends at deck.count
+        let res = get_symbol(x: myCellIndex.section + decknumber , y: myCellIndex.row)   // tapped 1 time on the symbol, the symbol has been selected (decknumber now starts at 1 and ends at deck.count)
         
         if (myCellIndex.section == 0){
             pressedcard1[myCellIndex.row] = !pressedcard1[myCellIndex.row]
             tappedSymbol1=Symbol(image:res[1],name:res[2])
-            print("section 0: ")
+            print("Section 0: ")
             print(tappedSymbol1)
             print("\n")
             
@@ -280,13 +282,13 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             self.previouscell1 = myCellIndex
         }
         else if (myCellIndex.section == 1){ // the principle is the same as for card 1 (here for card 2)
-            pressedcard2[myCellIndex.row] = !pressedcard2[myCellIndex.row]   //NEW
+            pressedcard2[myCellIndex.row] = !pressedcard2[myCellIndex.row]
             tappedSymbol2=Symbol(image: res[1], name: res[2])
-            print ("section 1: ")
+            print ("Section 1: ")
             print(tappedSymbol2)
             print("\n")
             
-            clear_all_highlighted_cells_section(1)  // clear all selections in card 2 (the card on the bottom)
+            clear_all_highlighted_cells_section(1) // clear all selections in card 2 (the card on the bottom)
             
             if (myCellIndex != previouscell2){
                 let cell = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
@@ -326,7 +328,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
             }
             
             if (decknumber <= deck.count - 3){
-                decknumber+=1
+                decknumber += 1
                 print("Number of decks = " + String(deck.count))
                 score += 1
                 playCorrectAnswerAudio()
@@ -341,6 +343,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 gameover = true
                 reinitarrays(true)
                 showGameOver()
+                score = 0
             }
         } else if (tappedSymbol1.name != tappedSymbol2.name && !tappedSymbol1.name.isEmpty && !tappedSymbol2.name.isEmpty){
             playIncorrectAnswerAudio()
@@ -423,7 +426,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                     
                 mysectionheader = sectionHeader
                 // start the timer
-                if (decknumber <= deck.count - 2){ //we run the asynchrononous timer until the last deck. IMPORTANT!
+                if (decknumber <= deck.count - 2){ // we run the asynchrononous timer until the last deck. IMPORTANT!
                   timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
                 }
             } else if (indexPath.section == 1) {
@@ -462,7 +465,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
 }
 
-extension UIImage {    //  https://stackoverflow.com/questions/27092354/rotating-uiimage-in-swift/29753437
+extension UIImage { // https://stackoverflow.com/questions/27092354/rotating-uiimage-in-swift/29753437
     func withSize(_ width: CGFloat, _ height: CGFloat) -> UIImage {
         let target = CGSize(width: width,height:  height)
         
