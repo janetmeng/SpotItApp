@@ -9,7 +9,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     private var symbols : [Symbol] = [ Symbol(image: "Algae", name: "algae"),
                                         Symbol(image: "Beach", name: "beach-1"),
                                         Symbol(image: "Buoy", name: "buoy"),
-                                        Symbol(image: "Clam", name: "clam"),
+                                        Symbol(image: "Clam", name: "clam-1"),
                                         Symbol(image: "Clownfish", name: "clownfish-1"),
                                         Symbol(image: "Compass", name: "compass"),
                                         Symbol(image: "Conch Shell", name: "conchshell"),
@@ -199,7 +199,9 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 collectionView.reloadData()
             } else { // round is 56 (final round)
                 print("End of game. We have displayed all the decks (last deck was not won). Launch showGameOver")
-                score -= 1
+                if (score > 0){
+                    score -= 1
+                }
                 timer.invalidate()
                 Thread.sleep(forTimeInterval: 0.75)
                 showGameOver() // IMPORTANT. the code will continue in parallel, even as GameOverViewController is displayed (cannot do anything about it)

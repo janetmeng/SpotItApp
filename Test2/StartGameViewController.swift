@@ -130,7 +130,6 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
         view.endEditing(true)
     }
 
-    
     @IBAction func showInstructions(_ sender: Any) {
         view.endEditing(true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -138,7 +137,7 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
         
         let backBarButtton = UIBarButtonItem(title: "Back to Main Menu", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButtton
-        navigationItem.backBarButtonItem?.tintColor=UIColor.gray
+        navigationItem.backBarButtonItem?.tintColor=UIColor.white
         
         self.navigationController?.pushViewController(mainGameView, animated: true)
     }
@@ -149,11 +148,11 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
         let mainGameView = storyboard.instantiateViewController(withIdentifier: "StartGameViewId") as! CardCollectionViewController    // force mainGameView to be instanciated as a CardCollectionViewController object
        
         mainGameView.numberRounds = numberRounds
-        print("number of rounds chosen (startGameViewController)= " + String(numberRounds))
+        print("number of rounds chosen = " + String(numberRounds))
         
         let backBarButtton = UIBarButtonItem(title: "Quit Game", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backBarButtton
-        navigationItem.backBarButtonItem?.tintColor=UIColor.gray
+        navigationItem.backBarButtonItem?.tintColor=UIColor.white
         
         self.navigationController?.pushViewController(mainGameView, animated: true)
         fieldCardNumber.text = "Choose the number of Cards"
