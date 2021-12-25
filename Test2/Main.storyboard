@@ -195,9 +195,9 @@
 
 There are 57 total cards in Search the Sea, but you can choose to play with 7, 14, 28, 42, or 57 cards when you begin the game. 
 
-The goal of the game is to find the matching symbol before the clock runs out. Note that there is only 1 matching symbol between every pair of cards.
+The goal of the game is to find the matching symbol before the clock runs out. There is only 1 matching symbol between every pair of cards.
 
-You may quit the game at any time; however, note that your progress will not be saved. 
+You may quit the game at any time. However, note that your progress will not be saved. 
 
 Good luck and have fun playing Search the Sea!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
