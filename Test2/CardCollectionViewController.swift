@@ -58,7 +58,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                                         Symbol(image: "Water Drop", name: "waterDrop"),
                                         Symbol(image: "Water Splash", name: "waterSplash"),
                                         Symbol(image: "Walrus", name: "walrus-1"),
-                                        Symbol(image: "Wave", name: "wave"),
+                                        Symbol(image: "Wave", name: "wave-1"),
                                         Symbol(image: "Whale", name: "whale"),
                                         Symbol(image: "Willow", name: "willow"),
                                         Symbol(image: "Yacht", name: "yacht-1"),

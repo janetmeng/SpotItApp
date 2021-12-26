@@ -155,7 +155,7 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
         navigationItem.backBarButtonItem?.tintColor=UIColor.white
         
         self.navigationController?.pushViewController(mainGameView, animated: true)
-        fieldCardNumber.text = "Choose the number of Cards"
+        fieldCardNumber.text = "Number of Cards"
     }
     
     /*
