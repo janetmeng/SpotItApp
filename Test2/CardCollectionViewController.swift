@@ -348,6 +348,27 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 score = 0
             }
         } else if (tappedSymbol1.name != tappedSymbol2.name && !tappedSymbol1.name.isEmpty && !tappedSymbol2.name.isEmpty){
+            
+            
+            if (myCellIndex.section == 1){
+                let cell1 = collectionView.cellForItem(at: previouscell1) as! CardCollectionViewCell
+                cell1.layer.borderWidth = 3.0
+                cell1.layer.borderColor = UIColor.red.cgColor
+                
+                let cell2 = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
+                cell2.layer.borderWidth = 3.0
+                cell2.layer.borderColor = UIColor.red.cgColor
+            } else if (myCellIndex.section == 0){
+                let cell2 = collectionView.cellForItem(at: previouscell2) as! CardCollectionViewCell
+                cell2.layer.borderWidth = 3.0
+                cell2.layer.borderColor = UIColor.red.cgColor
+                    
+                let cell1 = collectionView.cellForItem(at: myCellIndex) as! CardCollectionViewCell
+                cell1.layer.borderWidth = 3.0
+                cell1.layer.borderColor = UIColor.red.cgColor
+            }
+            
+            
             playIncorrectAnswerAudio()
         }
     }
