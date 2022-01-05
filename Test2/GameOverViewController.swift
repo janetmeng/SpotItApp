@@ -11,11 +11,16 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var playAgain: UIButton!
     @IBOutlet weak var backToMainMenu: UIButton!
     @IBOutlet weak var finalScore: UILabel!
+    @IBOutlet weak var ageIcon: UIImageView!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var comment: UILabel!
     @IBOutlet weak var playAgainIcon: UIImageView!
     @IBOutlet weak var backToMainMenuIcon: UIImageView!
     @IBOutlet weak var finalScoreIcon: UIImageView!
     @IBOutlet weak var gameOver: UIImageView!
     var score: Int = 0
+    var numberRounds: Int = 0
+    var age: Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +40,34 @@ class GameOverViewController: UIViewController {
         finalScore.text = "Your Score: \(score)"
         finalScore.textColor=UIColor.blue
         
+        ageIcon.center.x = self.view.center.x
+        
+        ageLabel.center.x = self.view.center.x
+        ageLabel.textColor = UIColor.white
+        if (score >= 0 && score < Int(numberRounds/4)){
+            age = 50
+        } else if (score >= Int(numberRounds/4) && score < Int(numberRounds/2)){
+            age = 40
+        } else if (score >= Int(numberRounds/2) && score < Int(3 * numberRounds/4)){
+            age = 30
+        } else if (score >= Int(3 * numberRounds/4) && score <= numberRounds){
+            age = 20
+        }
+        ageLabel.font=UIFont(name: "DIN Alternate", size: 20)
+        ageLabel.text = "Your Age: \(age)"
+        
+        comment.center.x = self.view.center.x
+        comment.font = UIFont(name: "DIN Alternate", size: 17)
+        if (age == 20){
+            comment.text = "Amazing visual acuity!"
+        } else if (age == 30){
+            comment.text = "Not too bad!"
+        } else if (age == 40){
+            comment.text = "Could be better!"
+        } else if (age == 50){
+            comment.text = "Better luck next time!"
+        }
+
         playAgain.center.x=self.view.center.x
         playAgain.titleLabel?.font = UIFont(name: "DIN Alternate", size: 20)
 

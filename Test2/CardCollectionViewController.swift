@@ -139,7 +139,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     override func willMove(toParent parent: UIViewController?){ // user quits game in the middle of the game (returns to main menu)
         super.willMove(toParent: parent)
         if parent == nil{
-            print("the back button was pressed.")
+            print("The back button was pressed.")
             timer.invalidate()
         }
     }
@@ -220,6 +220,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let gameoverView = storyboard.instantiateViewController(withIdentifier: "modal1") as! GameOverViewController
         gameoverView.score = score
+        gameoverView.numberRounds = numberRounds
         clear_all_highlighted_cells_section()
         self.navigationController?.pushViewController(gameoverView, animated: false)
     }
