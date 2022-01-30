@@ -61,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				792F581E2731E21500E1C7BF /* .gitignore */,
-				79225C1C27189B4800D5CC69 /* Test2 */,
+				79225C1C27189B4800D5CC69 /* SearchTheSea */,
 				79225C1B27189B4800D5CC69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,7 +74,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		79225C1C27189B4800D5CC69 /* Test2 */ = {
+		79225C1C27189B4800D5CC69 /* SearchTheSea */ = {
 			isa = PBXGroup;
 			children = (
 				79225C1D27189B4800D5CC69 /* AppDelegate.swift */,
@@ -93,7 +93,7 @@
 				799456E02748EBC800D29E15 /* InstructionsViewController.swift */,
 				79686F7D275EE2F00042452A /* Info.plist */,
 			);
-			path = Test2;
+			path = SearchTheSea;
 			sourceTree = "<group>";
 		};
 		79B49468274EF18D0078BD2D /* Sounds */ = {
@@ -330,7 +330,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NPJZ42689D;
-				INFOPLIST_FILE = Test2/Info.plist;
+				INFOPLIST_FILE = SearchTheSea/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -354,7 +354,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NPJZ42689D;
-				INFOPLIST_FILE = Test2/Info.plist;
+				INFOPLIST_FILE = SearchTheSea/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
