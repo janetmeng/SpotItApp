@@ -436,11 +436,11 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 sectionHeader.sectionHeaderlabel.textColor=UIColor.white
                 sectionHeader.sectionHeaderlabel.font=UIFont(name: "DIN Alternate", size: 26)
             
-                sectionHeader.sectionHeaderCard.isHidden = false
-                sectionHeader.sectionHeaderCard.center.x=self.view.center.x
-                sectionHeader.sectionHeaderCard.font=UIFont(name: "DIN Alternate", size: 14)
-                sectionHeader.sectionHeaderCard.textColor = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
-                sectionHeader.sectionHeaderCard.text = "Card 1"
+               // sectionHeader.sectionHeaderCard.isHidden = false
+               // sectionHeader.sectionHeaderCard.center.x=self.view.center.x
+              //  sectionHeader.sectionHeaderCard.font=UIFont(name: "DIN Alternate", size: 14)
+               // sectionHeader.sectionHeaderCard.textColor = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
+               // sectionHeader.sectionHeaderCard.text = "Card 1"
                 
                 sectionHeader.scoreIcon.isHidden = false
                 sectionHeader.scoreIcon.center.x = self.view.center.x
@@ -454,11 +454,11 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                   timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
                 }
             } else if (indexPath.section == 1) {
-                sectionHeader.sectionHeaderCard.isHidden = false
-                sectionHeader.sectionHeaderCard.center.x=self.view.center.x
-                sectionHeader.sectionHeaderCard.text = "Card 2"
-                sectionHeader.sectionHeaderCard.font=UIFont(name: "DIN Alternate", size: 14)
-                sectionHeader.sectionHeaderCard.textColor = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
+              //  sectionHeader.sectionHeaderCard.isHidden = false
+              //  sectionHeader.sectionHeaderCard.center.x=self.view.center.x
+               // sectionHeader.sectionHeaderCard.text = "Card 2"
+               // sectionHeader.sectionHeaderCard.font=UIFont(name: "DIN Alternate", size: 14)
+              //  sectionHeader.sectionHeaderCard.textColor = UIColor(red: 28/255, green: 183/255, blue: 255/255, alpha: 1)
                 
                 sectionHeader.sectionHeaderlabel.isHidden = true
 
@@ -475,9 +475,9 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if (section == 1) {
-            return CGSize(width: mysectionheader.frame.width, height: 100)
+            return CGSize(width: mysectionheader.frame.width, height: 90)
         } else {
-            return CGSize(width: mysectionheader.frame.width, height: 120)
+            return CGSize(width: mysectionheader.frame.width, height: 90)
         }
     }
 

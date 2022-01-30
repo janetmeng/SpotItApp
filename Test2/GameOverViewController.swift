@@ -24,7 +24,9 @@ class GameOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //navigationController?.isNavigationBarHidden = true //// might delete later
         self.navigationItem.setHidesBackButton(true, animated: true)
+    
         let backgroundImage = UIImage.init(named: "background-gameover")
         let backgroundImageView = UIImageView.init(frame: self.view.frame)
 

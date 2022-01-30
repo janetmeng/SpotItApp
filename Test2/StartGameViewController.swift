@@ -13,6 +13,7 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var howToPlayButton: UIButton!
     @IBOutlet weak var gameLogo: UIImageView!
+    @IBOutlet weak var homeScreenLogo: UIImageView!
     
     @IBOutlet weak var startGameIcon: UIImageView!
     @IBOutlet weak var howToPlayIcon: UIImageView!
@@ -33,7 +34,12 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "background.png"), for: .default)
         self.navigationController?.navigationBar.barTintColor=UIColor(red: 0/255, green: 105/255, blue: 150/255, alpha: 1)
+        //self.navigationController?.navigationBar.barTintColor=UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        self.navigationItem.backButtonTitle = "Quit Game"
+        
         print("first controller IN GAME")
         fieldCardNumber.center.x = self.view.center.x
         fieldCardNumber.backgroundColor = UIColor.clear
@@ -52,6 +58,8 @@ class StartGameViewController: UIViewController,UIPickerViewDelegate,UIPickerVie
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.alpha = 0.5
         self.view.insertSubview(backgroundImageView, at: 0)
+        
+        homeScreenLogo.center.x = self.view.center.x
         
         startGameButton.center.x=self.view.center.x
         startGameButton.titleLabel?.font = UIFont(name: "DIN Alternate", size: 20)
